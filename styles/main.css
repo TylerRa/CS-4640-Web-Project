@@ -13,3 +13,39 @@ label{
     border-width:2px;
     padding:0.3em;
 }
+
+body {
+    background-color: darkslategray;
+    color: white;
+    font-style: Arial;
+
+
+}
+
+header {
+    font-size: 28 ;
+    font: bold ;
+    color:white;
+}
+
+.userTheme {
+    background-color: #39729d;
+    color: black;
+}
+
+.opponentTheme {
+    background-color: #974b47;
+    color: black;
+}
+
+
+
+.flexbox {
+    display: flex;
+    padding:1%;
+    width: auto;
+
+
+}
+
+
