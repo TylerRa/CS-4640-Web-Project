@@ -44,8 +44,11 @@ header {
     display: flex;
     padding:1%;
     width: auto;
-
+    float: auto;
 
 }
 
+.primaryfooter {
+    width: 100%
+}
 
