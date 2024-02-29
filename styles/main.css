@@ -1,0 +1,15 @@
+label{
+    font-size: 18px;
+}
+
+.form-group{
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+.border{
+    border-radius: 5px;
+    border-color: black;
+    border-width:2px;
+    padding:0.3em;
+}
