@@ -94,7 +94,7 @@ img {
     color:white;
 }
 
-.links:hover{
+.links:hover{ 
     color:lightblue;
     text-decoration: underline;
     transition-duration:600ms;
