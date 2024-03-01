@@ -23,7 +23,7 @@ body {
 }
 
 header {
-    font-size: 28 ;
+    font-size: 48 ;
     font: bold ;
     color:white;
 }
@@ -44,11 +44,31 @@ header {
     display: flex;
     padding:1%;
     width: auto;
-    float: auto;
+    float: left;
 
 }
 
 .primaryfooter {
-    width: 100%
+    width: 100%;
+    
+    text-align:center;
+
 }
 
+.centertext {
+    text-align:center;
+}
+
+.buildimg {
+    width: 100px;
+    height: 80px;
+}
+img {
+    display:flex;
+    width: 100px;
+    height: 80px;
+    border-radius: 20px;
+    border-color: black;
+    border-width:20px;
+    padding:0.3em;
+}
