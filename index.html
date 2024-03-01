@@ -12,6 +12,7 @@
         
         <title>League of Legends Damage Calculator</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <meta property="og:title" content="League of Legends Damage Calculator">
         <meta property="og:type" content="website">
         <!--need url-->
@@ -33,7 +34,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ms-auto">
-                    
+                        <!--login and signup buttons-->
+                        <a class="nav-item nav-link" href="signup.html">Sign Up</a>
+                        <a class="nav-item nav-link" href="login.html">Log In</a>
                     </div>
                 </div>
             </div>
@@ -42,29 +45,16 @@
         <!--Description and Instructions-->
         <section>
             <div class = "card">
-                Use the fields below to input your stats and your opponents stats.
-                Click calculate to generate the damage per second.
-            </div>
-        </section>
-        <!--login and signup buttons-->
-        <section>
-            <div class = "card">
-                <div>
-                    <button onclick = "login.html">Login</button>
-                </div>
-                <div>
-                    <button onclick = "login.html">Sign up</button>
-                </div>
-            </div>
-        </section>
-        <!--import and export builds-->
-        <section>
-            <div class = "card">
-                <div>
-                    <button onclick = "">Import</button>
-                </div>
-                <div>
-                    <button onclick = "">Export</button>
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <p class="card-text">
+                    Use the fields below to input your stats and your opponents stats.
+                    Click calculate to generate the damage per second.
+                    </p>   
+                <!--import and export builds-->  
+                    <div class="btn-group">
+                        <a class="btn btn-secondary mx-1" href="#">Import</a>
+                        <a class="btn btn-secondary mx-1" href="#$">Export</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -132,7 +122,7 @@
                     <small id="onHitMagicDamageHelp" class="form-text text-muted">Add your champion's on-hit magic damage stat.</small>
                 </div>
             </form>
-            <button>
+            <button class="btn btn-dark">
                 Calculate
             </button>
         </section>
@@ -164,7 +154,7 @@
                     <small id="percentDamageReductionHelp" class="form-text text-muted">Add opponent's percent damage reduction stat.</small>
                 </div>
             </form>
-            <button>
+            <button class="btn btn-dark">
                 Calculate
             </button>
         </section>

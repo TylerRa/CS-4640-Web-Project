@@ -49,6 +49,26 @@ header {
 }
 
 .primaryfooter {
-    width: 100%
+    width: 100%;
+}
+
+.nav-item:hover{ /*screen updating CSS rule*/
+    color:white;
+    text-decoration: underline;
+    transition-duration: 600ms;
+}
+
+.navbar-brand:hover{ /*screen updating CSS rule*/
+    color:lightblue;
+    text-decoration: underline;
+    transition-duration: 600ms;
+    
+}
+.btn:focus{ /*screen updating CSS rule*/
+    background-color:green;
+}
+
+.btn-group{
+    justify-content: end;
 }
 
