@@ -25,7 +25,6 @@
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            
             <div class="container-fluid justify-content-between">
                 <a class="navbar-brand" href="index.html">League of Legends Damage Calculator</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,12 +37,18 @@
                 </div>
             </div>
         </nav>
-        <header>
-            View your builds
+        <header style="display: flex; justify-content: left; align-items: center; margin:1em;">
+          
+            <h4>
+            View your builds       
+            </h4>
+            
+            <a class=links href="index.html" style="margin-left:1em;"><h4>New Build</h4></a>
+     
         </header>
 
         <!--build1-->
-        <section class = "card">
+        <section class = "card mx-2 mt-2">
             <div class = "card">
                 <img src = "">
                 <img src = "">
@@ -52,7 +57,7 @@
                 <img src = "">
                 <img src = "">
             </div>
-            <div>
+            <div class="card-body">
                 <h3>Your Champion's Stats</h3>
                 <div>
                     <strong>Attack Damage:</strong> <span id="displayAttackDamage">0</span>
@@ -96,19 +101,15 @@
                 <div>
                     <strong>Percent Damage Reduction:</strong> <span id="displayPercentDamageReduction">0</span>
                 </div>
+                <div>
+                    <a class="btn btn-secondary mx-1" href="#">Import</a>
+                    <a class="btn btn-secondary mx-1" href="#$">Export</a>
+                </div>
             </div>
-                        <!--import and export builds-->
-            <section>
-                    <div>
-                        <button onclick = "">Import</button>
-                    </div>
-                    <div>
-                        <button onclick = "">Export</button>
-                    </div>
-            </section>
+
         </section>
         <!--build2-->
-        <section class = "card">
+        <section class = "card mx-2 mt-2">
             <div class = "card">
                 <img src = "">
                 <img src = "">
@@ -117,7 +118,7 @@
                 <img src = "">
                 <img src = "">
             </div>
-            <div>
+            <div class="card-body">
                 <h3>Your Champion's Stats</h3>
                 <div>
                     <strong>Attack Damage:</strong> <span id="displayAttackDamage">0</span>
@@ -161,18 +162,15 @@
                 <div>
                     <strong>Percent Damage Reduction:</strong> <span id="displayPercentDamageReduction">0</span>
                 </div>
+                <div>
+                    <a class="btn btn-secondary mx-1" href="#">Import</a>
+                    <a class="btn btn-secondary mx-1" href="#$">Export</a>
+                </div>
             </div>
-            <section>
-                <div>
-                    <button onclick = "">Import</button>
-                </div>
-                <div>
-                    <button onclick = "">Export</button>
-                </div>
-            </section>
+            
         </section>
         <!--build3-->
-        <section class = "card">
+        <section class = "card mx-2 mt-2">
             <div class = "card">
                 <img src = "">
                 <img src = "">
@@ -181,7 +179,7 @@
                 <img src = "">
                 <img src = "">
             </div>
-            <div>
+            <div class="card-body">
                 <h3>Your Champion's Stats</h3>
                 <div>
                     <strong>Attack Damage:</strong> <span id="displayAttackDamage">0</span>
@@ -225,15 +223,12 @@
                 <div>
                     <strong>Percent Damage Reduction:</strong> <span id="displayPercentDamageReduction">0</span>
                 </div>
+                <div class="mt-2">
+                    <a class="btn btn-secondary mx-1" href="#">Import</a>
+                    <a class="btn btn-secondary mx-1" href="#$">Export</a>
+                </div>
             </div>
-            <section>
-                <div>
-                    <button onclick = "">Import</button>
-                </div>
-                <div>
-                    <button onclick = "">Export</button>
-                </div>
-            </section>
+            
         </section>
 
         <footer>

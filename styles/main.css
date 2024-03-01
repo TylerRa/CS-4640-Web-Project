@@ -38,8 +38,6 @@ header {
     color: black;
 }
 
-
-
 .flexbox {
     display: flex;
     padding:1%;
@@ -68,7 +66,16 @@ header {
     background-color:green;
 }
 
-.btn-group{
+.btn-grouped{
     justify-content: end;
 }
 
+.links{
+    color:white;
+}
+
+.links:hover{
+    color:lightblue;
+    text-decoration: underline;
+    transition-duration:600ms;
+}
