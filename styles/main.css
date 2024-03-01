@@ -44,11 +44,12 @@ header {
     display: flex;
     padding:1%;
     width: auto;
-    float: left;
+    float: auto;
 
 }
 
 .primaryfooter {
+    text-align: center;
     width: 100%;
 }
 
@@ -72,12 +73,6 @@ header {
     justify-content: end;
 }
 
-
-    width: 100%;
-    
-    text-align:center;
-
-}
 
 .centertext {
     text-align:center;
