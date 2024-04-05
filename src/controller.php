@@ -20,13 +20,33 @@ public function __construct($input) {
     // Connect to the database by instantiating a
     // Database object (provided by CS4640).  You have a copy
     // in the src/example directory, but it will be below as well.
-    $this->db = new Database();
+    $host = "db"; 
+    $port = "5432";
+    $database = "example"; 
+    $user = "localuser"; 
+    $password = "cs4640LocalUser!"; 
 
+    $dbHandle = pg_connect("host=$host port=$port dbname=$database user=$user password=$password");
+    
     // Set input
     $this->input = $input;
 
     // will load the list of items into db
     // $this->loadItems();
+    $queryString = "
+        CREATE TABLE IF NOT EXISTS users (
+            user_id SERIAL PRIMARY KEY,
+            username VARCHAR(50) UNIQUE NOT NULL,
+            password VARCHAR(255) NOT NULL,
+            email VARCHAR(100) UNIQUE NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            user_data JSONB
+        )";
+    $query = pg_prepare($dbHandle, $queryString ,$_POST["email"]);
+    $res=pg_execute($dbHandle,$query);
+    if (!$res) {
+        $this->errorMessage = "error when creating users table";
+    } 
 }
 
 /**
