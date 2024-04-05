@@ -16,14 +16,20 @@
     }
 
 ////////////
-
-    if (!isset($_POST['email'], $_POST['password'],$_POST['confirmpassword']) ) {
+    $password_regex="^\S*(?=\S*[a-z])(?=\S*[\d])\S*$";
+    if (!isset($_POST['email'], $_POST['password'],$_POST['confirmpassword'])){
         ?><div class='alert alert-danger'>Please fill out all the fields first.</div><?php
+    } 
+    else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){ //validate form data
+        ?><div class='alert alert-danger'>Please enter a valid email.</div><?php
     }
     else if ($_POST['password']!=$_POST['confirmpassword']){
         ?><div class='alert alert-danger'>Please make sure your confirmed password matches the password.</div><?php
     }
-    else if ($_POST['password']==$_POST['confirmedpassword']){
+    else if (!preg_match($password_regex,$_POST['password'])){
+        ?><div class='alert alert-danger'>Your password must have at least 1 number.</div><?php
+    }
+    else if ($_POST['password']==$_POST['confirmedpassword'] && preg_match($password_regex,$_POST["password"])){
         $query=pg_prepare($dbHandle,"select * from example where email = $1;",$_POST["email"]);
         $res=pg_execute($dbHandle,$query);
    
@@ -41,5 +47,6 @@
         $res=pg_execute($dbHandle,$query);
         header("Location: ../viewBuilds.html");
     }
+
 
 
