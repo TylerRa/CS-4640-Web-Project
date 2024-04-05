@@ -39,7 +39,7 @@
 
                     //$_SESSION["email"] = $_POST["email"];
         $res=pg_execute($dbHandle,$query);
-        header("Location: viewBuilds.html");
+        header("Location: ../viewBuilds.html");
     }
 
 
