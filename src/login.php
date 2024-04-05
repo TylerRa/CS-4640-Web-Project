@@ -35,7 +35,7 @@
             // session and send them to the question page
          
             //$_SESSION["email"] = $res[0]["email"];
-            header("Location: ?viewBuilds.html");
+            header("Location: ../viewBuilds.html");
             return;
         } 
         else {
