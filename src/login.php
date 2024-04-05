@@ -34,7 +34,7 @@
             // Password was correct, save their information to the
             // session and send them to the question page
          
-            //$_SESSION["email"] = $res[0]["email"];
+            $_SESSION["email"] = $res[0]["email"];
             header("Location: ../viewBuilds.html");
             return;
         } 

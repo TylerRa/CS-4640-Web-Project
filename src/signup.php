@@ -3,8 +3,8 @@
     $host = "db"; 
     $port = "5432";
     $database = "example"; 
-    $user = "localuser"; 
-    $password = "cs4640LocalUser!"; 
+    $user = "qh8cz"; 
+    $password = "cRZawg3Nj4UY"; 
 
     $dbHandle = pg_connect("host=$host port=$port dbname=$database user=$user password=$password");
 
