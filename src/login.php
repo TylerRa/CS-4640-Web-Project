@@ -17,16 +17,16 @@
 
     
     if (!isset($_POST['email'], $_POST['password']) ) {
-	echo "'Please fill out the username and password'";
+        ?><div class='alert alert-danger'>Please fill out all the fields first.</div><?php
     }
 
-    $query = pg_prepare($dbHandle,"select * from users where email = $1;",$_POST["email"]);
+    $query = pg_prepare($dbHandle,"select * from example where email = $1;",$_POST["email"]);
 
     $res=pg_execute($dbHandle,$query);
 
     if (empty($res)){    
         ?><div class='alert alert-danger'>Please sign up for an account first.</div><?php
-        header("Location: ?command=signup");
+        header("Location: ../signup.html");
         return;
     }
     else{
@@ -34,8 +34,7 @@
             // Password was correct, save their information to the
             // session and send them to the question page
          
-            $_SESSION["email"] = $res[0]["email"];
-            
+            //$_SESSION["email"] = $res[0]["email"];
             header("Location: ?viewBuilds.html");
             return;
         } 
