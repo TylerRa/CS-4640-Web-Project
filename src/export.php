@@ -24,8 +24,7 @@ function exportStatsToJson() {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $exportedStats = exportStatsToJson();
     if ($exportedStats) {
-        header('Content-Type: application/json');
-        echo $exportedStats;
+        header("Location: ?viewBuilds.html");
     } else {
         echo "Error exporting stats.";
     }
