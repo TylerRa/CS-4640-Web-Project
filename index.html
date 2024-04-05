@@ -54,7 +54,7 @@
                 <!--import and export builds-->  
                     <div class="btn-grouped">
                         <a class="btn btn-secondary mx-1" href="#">Import</a>
-                        <a class="btn btn-secondary mx-1" href="#$">Export</a>
+                        <a id="exportButton" class="btn btn-secondary mx-1" href="#">Export</a>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
         <!--Your damage-->
         <section class="card flexbox userTheme ">
             <h2>Your Champion's damage stats</h2>
-            <form>
+            <form id="userStatsForm" method="post" action="export.php">
                 <div class="form-group">
                     <label for="attackDamage">Attack Damage</label>
                     <input type="text" class="form-control" id="attackDamage" aria-describedby="attackDamageHelp" placeholder="Enter attack damage">
@@ -176,5 +176,12 @@
             <hr>
             <small>&copy; Tyler Rasmussen, Isabella Huang, 2024 </small>
         </footer>
+
+        <script>
+            document.getElementById('exportButton').addEventListener('click', function() {
+                document.getElementById('userStatsForm').submit();
+            });
+        </script>
+        
     </body>
 </html>

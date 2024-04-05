@@ -25,8 +25,8 @@ public function __construct($input) {
     // Set input
     $this->input = $input;
 
-    // will load the list of items indb
-    $this->loadItems();
+    // will load the list of items into db
+    // $this->loadItems();
 }
 
 /**
