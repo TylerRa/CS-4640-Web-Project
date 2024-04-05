@@ -1,4 +1,7 @@
+
 <?php
+//https://cs4640.cs.virginia.edu/hjy4kh/project/index.php
+//Author: Tyler Rasmussen
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);

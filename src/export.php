@@ -1,5 +1,6 @@
-<?php
 
+<?php
+//Author: Tyler Rasmussen
 function exportStatsToJson() {
     $stats = array();
 

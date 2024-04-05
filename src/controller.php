@@ -1,5 +1,6 @@
 
 <?php
+//Author: Tyler Rasmussen
 
 class controller {
 
@@ -12,14 +13,9 @@ private $errorMessage = "";
  * Constructor
  */
 public function __construct($input) {
-    // We should always start (or join) a session at the top
-    // of execution of PHP -- the constructor is the best place
-    // to do that.
+   
     session_start(); // start a session!
     
-    // Connect to the database by instantiating a
-    // Database object (provided by CS4640).  You have a copy
-    // in the src/example directory, but it will be below as well.
     $host = "db"; 
     $port = "5432";
     $database = "example"; 
@@ -81,7 +77,7 @@ public function run() {
             break;
         case "logout":
             include("logout.php");
-            // no break; logout will also show the welcome page.
+            // no break; logout will also show the index page.
         default:
             include("index.html");
             break;
