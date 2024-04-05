@@ -1,6 +1,6 @@
 
 <?php
-//https://cs4640.cs.virginia.edu/hjy4kh/project/index.php
+//https://cs4640.cs.virginia.edu/hjy4kh/project/index.html
 //Author: Tyler Rasmussen
 
 error_reporting(E_ALL);
