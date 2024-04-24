@@ -132,7 +132,7 @@ class Controller {
             }
             $this->db->query("insert into public.users (email, password) values ($1, $2);",$_POST["email"],password_hash($_POST["password"], PASSWORD_DEFAULT));
 
-                    //$_SESSION["email"] = $_POST["email"];
+            $_SESSION["email"] = $_POST["email"];
         ///CS-4640-Web-Project/ 
             header("Location: viewBuilds.html");
             exit;
@@ -196,7 +196,7 @@ class Controller {
     
     public function profile(){
         $query=$this->db->query("select * from public.users where email = $1;",$_SESSION["email"]);
-        $_SESSION['email']=
+        
         $password_regex="/^\S*(?=\S*[a-z])(?=\S*[\d])\S*$/";
         if (!isset($_POST['password'],$_POST['confirmpassword'])){
             $_SESSION['errorMessage']="Please fill out all the fields first.";
@@ -247,6 +247,21 @@ class Controller {
     }
     
     public function saveToProfile(){
+
+        $jsonBuild = json_encode([
+            'attackDamage' => $_POST['attackDamage'],
+            'abilityPower' => $_POST['abilityPower'],
+            'attackSpeed' => $_POST['attackSpeed'],
+            'lethality' => $_POST['lethality'],
+            'criticalStrikeChance' => $_POST['criticalStrikeChance'],
+            'armorPenetration' => $_POST['armorPenetration'],
+            'magicPenetration' => $_POST['magicPenetration'],
+            'onHitPhysicalDamage' => $_POST['onHitPhysicalDamage'],
+            'onHitTrueDamage' => $_POST['onHitTrueDamage'],
+            'onHitMagicDamage' => $_POST['onHitMagicDamage']
+        ]);
+
+        $this->db->query("insert into public.users (builds) value=$1 where email=$2;",$jsonBuild,$_SESSION['email']);
         
     }
 }
