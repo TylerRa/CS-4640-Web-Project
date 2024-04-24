@@ -45,12 +45,16 @@ function loadBuild() {
 // DPS = Damage * attackspeed
 function calculateDps() {
     var stats = {};
-
+    console.log("entered calculate dps");
     // Retrieve user input stats
     $("#userStatsForm").children().each(function(index, element) {
         var statName = $(element).find('label').text().trim(); // Get the label text as the stat name
         var statValue = parseFloat($(element).find('input').val()); // Get the input value as the stat value
         stats[statName] = statValue; 
+
+        if (!isNaN(statValue)) { // Validate that the stat value is a valid number
+            stats[statName] = statValue;
+        }
     });
     
     // Retrieve opponent input stats
@@ -58,23 +62,66 @@ function calculateDps() {
         var statName = $(element).find('label').text().trim(); // Get the label text as the stat name
         var statValue = parseFloat($(element).find('input').val()); // Get the input value as the stat value
         stats[statName] = statValue; 
+
+        if (!isNaN(statValue)) { // Validate that the stat value is a valid number
+            stats[statName] = statValue;
+        }
     } )
 
+    if (Object.keys(stats).length === 0) {
+        console.log("No valid stats found.");
+        return;
+    }
+    console.log(stats);
     // Extract individual stats from the stats object
     var physicalDamage = stats['Attack Damage'];
     var criticalChance = stats['Critical Strike Chance'];
-    var modifier = stats['Ability Power'];
+    var modifier = 1.75;
     var onhitPhysicalDamage = stats['On-Hit Physical Damage'];
     var armor = stats['Armor'];
     var armorPenetration = stats['Armor Penetration'];
     var lethality = stats['Lethality'];
     var attackSpeed = stats['Attack Speed'];
 
-    var damage = (physicalDamage + criticalChance * (modifier - 1) * 100) + onhitPhysicalDamage;
-
-    var mitigatedDamage = damage * 100 / (100 + armor * armorPenetration - lethality);
-
+    var damage = (physicalDamage + criticalChance/100 * (modifier - 1) * 100) + onhitPhysicalDamage;
+    console.log(damage);
+    var mitigatedDamage = damage * 100 / (100 + armor -(armor * armorPenetration*.01) - lethality);
+    console.log(mitigatedDamage);
     var dps = mitigatedDamage * attackSpeed;
+    console.log(dps);
+    $("#dpsBox").val(dps);
+}
 
-    return dps;
+function exportBuild() {
+    var stats = {};
+    $("#userStatsForm").children().each(function(index, element) {
+        var statName = $(element).find('label').text().trim(); // Get the label text as the stat name
+        var statValue = $(element).find('input').val(); // Get the input value as the stat value
+        stats[statName] = statValue; // Add the stat name and value to the stats object
+    });
+    
+    // Convert the stats object to JSON
+    var jsonData = JSON.stringify(stats, null, 2); // Use null and 2 for pretty formatting
+
+    // Create a Blob object with the JSON data
+    var blob = new Blob([jsonData], { type: 'application/json' });
+
+    // Create a temporary anchor element
+    var downloadAnchorNode = document.createElement('a');
+    
+    // Set the anchor's href attribute to a URL representing the Blob
+    downloadAnchorNode.href = window.URL.createObjectURL(blob);
+
+    // Set the anchor's download attribute to the desired filename
+    downloadAnchorNode.download = 'user_stats.json'; // Default filename
+
+    // Append the anchor to the document body
+    document.body.appendChild(downloadAnchorNode);
+
+    // Programmatically click the anchor to trigger the download
+    downloadAnchorNode.click();
+
+    // Remove the anchor from the document body
+    document.body.removeChild(downloadAnchorNode);
+
 }
