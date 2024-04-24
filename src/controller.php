@@ -73,30 +73,28 @@ class Controller {
      */
     public function login() {
         if (!isset($_POST['email'], $_POST['password']) ) {
-            $this->errorMessage="Please fill out all the fields first.";
+            $_SESSION['errorMessage']="Please fill out all the fields first.";
+            exit;
         }
         $query = $this->db->query("select * from public.users where email = $1;",$_POST["email"]);
         if (empty($query)){    
-            header("Location: signup.html");
+            $_SESSION['errorMessage']="You don't have an account, please sign up first.";
+            header("Location: signup.php");
             exit; 
         }
         
         else{
             //var_dump($query[0]["password"]);
             if (password_verify($_POST["password"], $query[0]["password"])) {
-                // Password was correct, save their information to the
-                // session and send them to the question page
                 
-                $_SESSION["email"] = $query[0]["email"]; ///CS-4640-Web-Project/ 
-                header("Location: viewBuilds.html");
+                $_SESSION["email"] = $query[0]["email"]; 
+                header("Location: viewBuilds.php");
                 exit;
             } 
             else {
-                // Password was incorrect
-                $this->errorMessage="Incorrect Password.";
-                header("Location: login.html");
+                $_SESSION['errorMessage']="Incorrect Password.";
+                header("Location: login.php");
                 exit;
-                
             }
     
         }
@@ -104,37 +102,32 @@ class Controller {
     public function signUp(){
         $password_regex="/^\S*(?=\S*[a-z])(?=\S*[\d])\S*$/";
         if (!isset($_POST['email'], $_POST['password'],$_POST['confirmpassword'])){
-            $this->errorMessage="Please fill out all the fields first.";
-            echo "<h4>{$this->errorMessage}</h4>";
+            $_SESSION['errorMessage']="Please fill out all the fields first.";
+            exit;
         } 
         
         else if ($_POST['password']!=$_POST['confirmpassword']){
-            $this->errorMessage="Please make sure your confirmed password matches your password.";
-            //echo "<h4>{$this->errorMessage}</h4>";
-            header("Location: signup.html");
+            $_SESSION['errorMessage']="Please make sure your confirmed password matches your password.";
+            header("Location: signup.php");
             exit;
         
         }
         else if (!preg_match($password_regex,$_POST['password'])){
-            $this->errorMessage="Your password must have at least 1 letter and 1 number.";
-            echo "<h4>{$this->errorMessage}</h4>";
-        
+            $_SESSION['errorMessage']="Your password must have at least 1 letter and 1 number.";
+            exit;
         }
         else if ($_POST['password']==$_POST['confirmpassword'] && preg_match($password_regex,$_POST["password"])){
             //var_dump($_POST['email'],$_POST['password'],$_POST['confirmpassword']);
             $query=$this->db->query("select * from public.users where email = $1;",$_POST["email"]);
         
             if (!empty($query)){    
-            
-                $this->errorMessage="You already have an account! Please log in";
-                echo "<h4>{$this->errorMessage}</h4>";
-             ///CS-4640-Web-Project/ 
+                $_SESSION['errorMessage']="You already have an account! Please log in";
+                
             }
             $this->db->query("insert into public.users (email, password) values ($1, $2);",$_POST["email"],password_hash($_POST["password"], PASSWORD_DEFAULT));
 
-            $_SESSION["email"] = $_POST["email"];
-        ///CS-4640-Web-Project/ 
-            header("Location: viewBuilds.html");
+            $_SESSION["email"] = $query[0]["email"];
+            header("Location: viewBuilds.php");
             exit;
         }
     }
@@ -235,11 +228,7 @@ class Controller {
      */
     public function showWelcome() {
         
-        $message = "";
-        if (!empty($this->errorMessage)) {
-            $message = "<div class='alert alert-danger'>{$this->errorMessage}</div>";
-        }
-        header("Location: index.html");// /CS-4640-Web-Project/ /student/qh8cz/public_html/final_project/
+        header("Location: indexhtml.php");// /CS-4640-Web-Project/ /student/qh8cz/public_html/final_project/
     }
 
     public function calculate(){
@@ -247,8 +236,7 @@ class Controller {
     }
     
     public function saveToProfile(){
-
-        $jsonBuild = json_encode([
+        $arr=[
             'attackDamage' => $_POST['attackDamage'],
             'abilityPower' => $_POST['abilityPower'],
             'attackSpeed' => $_POST['attackSpeed'],
@@ -259,9 +247,20 @@ class Controller {
             'onHitPhysicalDamage' => $_POST['onHitPhysicalDamage'],
             'onHitTrueDamage' => $_POST['onHitTrueDamage'],
             'onHitMagicDamage' => $_POST['onHitMagicDamage']
-        ]);
-
-        $this->db->query("insert into public.users (builds) value=$1 where email=$2;",$jsonBuild,$_SESSION['email']);
+        ];
+        
+        if (!isset($_SESSION['email'])){
+            $_SESSION['errorMessage']="Please sign up or log in first to save your builds.";
+            exit;
+        }
+        $query=$this->db->query("select * from public.users where email=$1;",$_SESSION['email']);
+        $curBuilds=json_decode($query[0]['builds']);
+        if (($curBuilds===null)){
+            $curBuilds=[];
+        }
+        $curBuilds[]=$arr;
+        $newBuild=json_encode($curBuilds);
+        $this->db->query("update public.users set builds=$1 where email=$2;",$newBuild,$_SESSION['email']);
         
     }
 }

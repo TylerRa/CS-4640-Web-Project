@@ -1,3 +1,8 @@
+<?php
+session_start();
+$errorMessage = isset($_SESSION['errorMessage']) ? $_SESSION['errorMessage'] : '';
+unset($_SESSION['errorMessage']); 
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -26,7 +31,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid justify-content-between">
-                <a class="navbar-brand" href="index.html">League of Legends Damage Calculator</a>
+                <a class="navbar-brand" href="indexhtml.php">League of Legends Damage Calculator</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -44,7 +49,7 @@
             View your builds       
             </h4>
             
-            <a class=links href="index.html" style="margin-left:1em;"><h4>New Build</h4></a>
+            <a class=links href="indexhtml.php" style="margin-left:1em;"><h4>New Build</h4></a>
      
         </header>
 

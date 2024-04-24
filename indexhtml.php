@@ -1,3 +1,8 @@
+<?php
+session_start();
+$errorMessage = isset($_SESSION['errorMessage']) ? $_SESSION['errorMessage'] : '';
+unset($_SESSION['errorMessage']); 
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -30,15 +35,16 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             
             <div class="container-fluid justify-content-between">
-                <a class="navbar-brand" href="index.html">League of Legends Damage Calculator</a>
+                <a class="navbar-brand" href="indexhtml.php">League of Legends Damage Calculator</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ms-auto">
-                        <!--login and signup buttons-->
-                        <a class="nav-item nav-link" href="signup.html">Sign Up</a>
-                        <a class="nav-item nav-link" href="login.html">Log In</a>
+                        <?php if (!isset($_SESSION['email'])):?>
+                            <a class="nav-item nav-link" href="signup.html">Sign Up</a>
+                            <a class="nav-item nav-link" href="login.html">Log In</a>
+                        <?php endif;?>
                         <a class="nav-item nav-link" href="viewBuilds.html">Builds</a>
                     </div>
                 </div>
@@ -47,6 +53,11 @@
 
         <!--Description and Instructions-->
         <div>
+        <?php if (!empty($errorMessage)): ?>
+                <div class="alert alert-success" >
+                <?php echo $errorMessage; ?>
+                </div>
+            <?php endif; ?>
             <div class = "card">
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <p class="card-text">
