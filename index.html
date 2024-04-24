@@ -22,6 +22,8 @@
         <meta property="og:site_name" content="League of Legends Damage Calculator"> 
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet/less" type="text/css" href="styles/custom.less" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     </head>
 
     <body>
@@ -151,7 +153,7 @@
         <!--Opponents stats-->
         <section class = "card flexbox opponentTheme">
             <h2>Your opponent's stats</h2>
-            <form id = "opponentsStatsForm">
+            <form id = "opponentStatsForm">
                 <div class="form-group">
                     <label for="armor">Armor</label>
                     <input type="text" class="form-control" id="armor" aria-describedby="armorHelp" placeholder="Enter armor">
@@ -180,6 +182,7 @@
             <button class="btn btn-dark">
                 Calculate
             </button>
+            <input type="text" id="dpsBox" placeholder="DPS" readonly>
             <button class="btn btn-dark">
                 Save to Profile
             </button>
@@ -190,11 +193,14 @@
             <hr>
             <small>&copy; Tyler Rasmussen, Isabella Huang, 2024 </small>
         </footer>
-
+        <script src = builds.js></script>
         <script>
-            document.getElementById('exportButton').addEventListener('click', function() {
-                document.getElementById('userStatsForm').submit();
-            });
+            document.getElementById('exportButton').addEventListener('click', exportBuild);
+            // Event listener for the Calculate button
+            document.getElementById('userStatsCalculate').addEventListener('click', calculateDps);
+            // Event listener for the Save to Profile button
+            document.getElementById('userStatsSave').addEventListener('click', saveBuild);
+
         </script>
 
     </body>
