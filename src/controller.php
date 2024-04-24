@@ -33,10 +33,6 @@ class Controller {
         if (isset($this->input["command"]))
             $command = $this->input["command"];
 
-        
-        if (!isset($_SESSION["name"]) && $command != "login")
-            $command = "welcome";
-
         switch($command) {
             case "signUp":
                 $this->signUp();
@@ -71,73 +67,67 @@ class Controller {
     public function login() {
         if (!isset($_POST['email'], $_POST['password']) ) {
             $this->errorMessage="Please fill out all the fields first.";
-            
         }
     
-        $query = $this->db->query("select * from users where email = $1;",$_POST["email"]);
+        $query = $this->db->query("select * from public.users where email = $1;",$_POST["email"]);
         
         if (empty($query)){    
-            
-            header("Location: /qh8cz/final_project/signup.html"); // /CS-4640-Web-Project/
-            
+            header("Location: /qh8cz/final_project/signup.html"); // /CS-4640-Web-Project/ 
         }
+        
         else{
+            //var_dump($query[0]["password"]);
             if (password_verify($_POST["password"], $query[0]["password"])) {
                 // Password was correct, save their information to the
                 // session and send them to the question page
-             
-                $_SESSION["email"] = $query[0]["email"]; ///CS-4640-Web-Project/  /students/qh8cz/public_html/final_project/
+                
+                $_SESSION["email"] = $query[0]["email"]; ///CS-4640-Web-Project/ 
                 header("Location: /qh8cz/final_project/viewBuilds.html");
                 return;
             } 
             else {
                 // Password was incorrect
                 $this->errorMessage="Incorrect Password.";
+                header("Location: /qh8cz/final_project/login.html");
                 
             }
     
         }
     }
     public function signUp(){
-        $password_regex="^\S*(?=\S*[a-z])(?=\S*[\d])\S*$";
-    if (!isset($_POST['email'], $_POST['password'],$_POST['confirmpassword'])){
-        $this->errorMessage="Please fill out all the fields first.";
-        echo "<h4>{$this->errorMessage}</h4>";
-        return;
-    } 
-    else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){ //validate form data
-        $this->errorMessage="Please enter a valid email.";
-        echo "<h4>{$this->errorMessage}</h4>";
-        return;
-    }
-    else if ($_POST['password']!=$_POST['confirmpassword']){
-        $this->errorMessage="Please make sure your confirmed password matches your password.";
-        echo "<h4>{$this->errorMessage}</h4>";
-        return;
-    }
-    else if (!preg_match($password_regex,$_POST['password'])){
-        $this->errorMessage="Your password must have at least 1 letter and 1 number.";
-        echo "<h4>{$this->errorMessage}</h4>";
-        return;
-    }
-    else if ($_POST['password']==$_POST['confirmpassword'] && preg_match($password_regex,$_POST["password"])){
-        $query=$this->db->query("select * from users where email = $1;",$_POST["email"]);
-   
-        if (!empty($query)){    
-            
-            $this->errorMessage="You already have an account! Please log in";
+        $password_regex="/^\S*(?=\S*[a-z])(?=\S*[\d])\S*$/";
+        if (!isset($_POST['email'], $_POST['password'],$_POST['confirmpassword'])){
+            $this->errorMessage="Please fill out all the fields first.";
             echo "<h4>{$this->errorMessage}</h4>";
-            return; ///var/www/html/CS-4640-Web-Project/ /students/qh8cz/public_html/final_project/
+        } 
+        
+        else if ($_POST['password']!=$_POST['confirmpassword']){
+            $this->errorMessage="Please make sure your confirmed password matches your password.";
+            //echo "<h4>{$this->errorMessage}</h4>";
+            header("Location: /qh8cz/final_project/signup.html");
+        
         }
-        $this->db->query("insert into users (email, password) values ($1, $2);",
-                         $_POST["email"],
-                        // Use the hashed password!
-                        password_hash($_POST["password"], PASSWORD_DEFAULT));
+        else if (!preg_match($password_regex,$_POST['password'])){
+            $this->errorMessage="Your password must have at least 1 letter and 1 number.";
+            echo "<h4>{$this->errorMessage}</h4>";
+        
+        }
+        else if ($_POST['password']==$_POST['confirmpassword'] && preg_match($password_regex,$_POST["password"])){
+            //var_dump($_POST['email'],$_POST['password'],$_POST['confirmpassword']);
+            $query=$this->db->query("select * from public.users where email = $1;",$_POST["email"]);
+        
+            if (!empty($query)){    
+            
+                $this->errorMessage="You already have an account! Please log in";
+                echo "<h4>{$this->errorMessage}</h4>";
+             ///CS-4640-Web-Project/ 
+            }
+            $this->db->query("insert into public.users (email, password) values ($1, $2);",$_POST["email"],password_hash($_POST["password"], PASSWORD_DEFAULT));
 
                     //$_SESSION["email"] = $_POST["email"];
-        ///CS-4640-Web-Project/ /students/qh8cz/public_html/final_project/
-        header("Location: /qh8cz/final_project/viewBuilds.html");
-    }
+        ///CS-4640-Web-Project/ 
+            header("Location: /qh8cz/final_project/viewBuilds.html");
+        }
     }
    /*
     public function loginDatabase() {
@@ -196,7 +186,7 @@ class Controller {
     }
     
     public function profile(){
-        $query = $this->db->query("select * from users where email = $1;",$_SESSION["email"]);
+        $query = $this->db->query("select * from public.users where email = $1;",$_SESSION["email"]);
 
         $password_regex="^\S*(?=\S*[a-z])(?=\S*[\d])\S*$";
         if (!isset($_POST['password'],$_POST['confirmpassword'])){
@@ -212,7 +202,7 @@ class Controller {
             $this->errorMessage="Your password must have at least 1 letter and 1 number."; 
         }
         else if ($_POST['password']==$_POST['confirmpassword'] && preg_match($password_regex,$_POST["password"])){
-        $query=$this->db->query("update users set password = $1 where email = $2;",password_hash($_POST["password"],PASSWORD_DEFAULT),$_SESSION["email"]);
+        $query=$this->db->query("update public.users set password = $1 where email = $2;",password_hash($_POST["password"],PASSWORD_DEFAULT),$_SESSION["email"]);
             $this->errorMessage="Your password has been updated successfully.";
         
     }
