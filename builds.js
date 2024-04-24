@@ -97,31 +97,20 @@ function exportBuild() {
     $("#userStatsForm").children().each(function(index, element) {
         var statName = $(element).find('label').text().trim(); // Get the label text as the stat name
         var statValue = $(element).find('input').val(); // Get the input value as the stat value
-        stats[statName] = statValue; // Add the stat name and value to the stats object
+        stats[statName] = statValue;
     });
     
-    // Convert the stats object to JSON
-    var jsonData = JSON.stringify(stats, null, 2); // Use null and 2 for pretty formatting
+    var jsonData = JSON.stringify(stats, null, 2);
 
-    // Create a Blob object with the JSON data
     var blob = new Blob([jsonData], { type: 'application/json' });
 
     // Create a temporary anchor element
     var downloadAnchorNode = document.createElement('a');
     
-    // Set the anchor's href attribute to a URL representing the Blob
     downloadAnchorNode.href = window.URL.createObjectURL(blob);
-
-    // Set the anchor's download attribute to the desired filename
     downloadAnchorNode.download = 'user_stats.json'; // Default filename
-
-    // Append the anchor to the document body
     document.body.appendChild(downloadAnchorNode);
-
-    // Programmatically click the anchor to trigger the download
     downloadAnchorNode.click();
-
-    // Remove the anchor from the document body
     document.body.removeChild(downloadAnchorNode);
 
 }
