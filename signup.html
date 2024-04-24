@@ -43,8 +43,8 @@
         <section>
            
             <div class="row mx-auto">
-                <div class="col mx-2 mt-2 border">
-                    <form action="src/signup.php" method="post">
+                <div class="col mx-2 mt-2 border"> <!--/students/qh8cz/students/qh8cz/private/-->
+                    <form action="index.php?command=signUp" method="post"> 
                         <h2>Sign Up:</h2>
                         <div class="form-group">
                             <label for="InputEmail1">Email address:</label>
@@ -59,12 +59,12 @@
                             <label for="ConfirmPassword1">Confirm Password:</label>
                             <input type="password" name="confirmpassword" class="form-control" id="confirmpassword" placeholder="Confirm password" required>
                         </div>
-                        <a class="btn btn-primary" type="submit">Sign Up</a>
+                        <button class="btn btn-primary" type="submit">Sign Up</button>
                     </form>
                 </div>
                 <div class="col mx-2 mt-2 border">
-                    <h2>Already have an account?</h2>
-                    <form action="src/login.php" method="post">
+                    <h2>Already have an account?</h2><!--/opt/src/project/  /students/qh8cz/students/private/-->
+                    <form action="index.php?command=login" method="post">
                         <div class="form-group">
                             <label for="loginEmail1">Email address:</label>
                             <input type="email" name="email" autocomplete="email" class="form-control" id="loginEmail1" placeholder="Enter email" required>
@@ -74,7 +74,7 @@
                             <label for="loginPassword1">Password:</label>
                             <input type="password" name="password" class="form-control" id="loginPassword1" placeholder="Password: (must have 1 number)" required>
                         </div>
-                        <a class="btn btn-primary" type = "submit" >Log In</a>
+                        <button class="btn btn-primary" type = "submit" >Log In</button>
                     </form>
                 </div>
             </div>
@@ -85,3 +85,4 @@
             
         </footer>
     </body>
+</html>

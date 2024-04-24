@@ -39,9 +39,10 @@
         </nav>
         <div>
 			<h2>Profile Page</h2>
+            <h4>Hello, you're logged in as <?php echo $_SESSION['email']; ?></h4>
 			<div class="card-body">
-			
-                    <form action="src/profile.php" method="post">
+                                    <!--/opt/src/-->
+                    <form action="index.php?command=profile" method="post">
                         <div class="form-group">
                             <label for="inputemail">Change your password:</label>
                             <input type="password" name="password"  class="form-control" id="password" placeholder="New password:" required>
@@ -50,7 +51,7 @@
                             <label for="password">Confirm your new password:</label>
                             <input type="password" name="confirmpassword" class="form-control" id="confirmpassword" placeholder="Confirm password:" required>
                         </div>
-                        <a class="btn btn-primary" type="submit">Confirm</a>
+                        <button class="btn btn-primary" type="submit">Confirm</button>
                     </form>
                 </div>
 			</div>

@@ -1,8 +1,6 @@
-
 <?php
-//https://cs4640.cs.virginia.edu/hjy4kh/project/index.html
-//Author: Tyler Rasmussen
 
+// DEBUGGING ONLY! Show all errors.
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
@@ -10,14 +8,12 @@ ini_set("display_errors", 1);
 // that Apache does not serve publicly.  They will be in /opt/src/, which
 // is our src/ directory in Docker.
 spl_autoload_register(function ($classname) {
-        include "$classname.php";
+        include "/students/qh8cz/students/qh8cz/private/$classname.php"; // /opt/src/project/ /students/qh8cz/students/qh8cz/private/
 });
 
-// Other global things that we need to do
-// (such as starting a session, coming soon!)
-
 // Instantiate the front controller
-$leg = new controller($_GET);
+$controller = new Controller($_GET);
 
 // Run the controller
-$leg->run();
+$controller->run();
+
