@@ -17,7 +17,7 @@ class Config {
         "port" => "5432",
         "database" => "qh8cz",
         "user" => "qh8cz",
-        "password" => "KAzB0hn7oqzL"
+        "pass" => "KAzB0hn7oqzL"
         /*cRZawg3Nj4UY
         "host" => "db",
         "port" => 5432,

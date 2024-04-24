@@ -71,14 +71,15 @@ class Controller {
     public function login() {
         if (!isset($_POST['email'], $_POST['password']) ) {
             $this->errorMessage="Please fill out all the fields first.";
+            
         }
     
         $query = $this->db->query("select * from users where email = $1;",$_POST["email"]);
-    
+        
         if (empty($query)){    
-            ?><div class='alert alert-danger'>Please sign up for an account first.</div><?php
-            header("Location: /students/qh8cz/public_html/final_project/signup.html"); // /CS-4640-Web-Project/
-            return;
+            
+            header("Location: /qh8cz/final_project/signup.html"); // /CS-4640-Web-Project/
+            
         }
         else{
             if (password_verify($_POST["password"], $query[0]["password"])) {
@@ -86,7 +87,7 @@ class Controller {
                 // session and send them to the question page
              
                 $_SESSION["email"] = $query[0]["email"]; ///CS-4640-Web-Project/  /students/qh8cz/public_html/final_project/
-                header("Location: /students/qh8cz/public_html/final_project/viewBuilds.html");
+                header("Location: /qh8cz/final_project/viewBuilds.html");
                 return;
             } 
             else {
@@ -135,7 +136,7 @@ class Controller {
 
                     //$_SESSION["email"] = $_POST["email"];
         ///CS-4640-Web-Project/ /students/qh8cz/public_html/final_project/
-        header("Location: /students/qh8cz/public_html/final_project/viewBuilds.html");
+        header("Location: /qh8cz/final_project/viewBuilds.html");
     }
     }
    /*
@@ -226,7 +227,7 @@ class Controller {
         if (!empty($this->errorMessage)) {
             $message = "<div class='alert alert-danger'>{$this->errorMessage}</div>";
         }
-        header("Location: /student/qh8cz/public_html/final_project/index.html");// /CS-4640-Web-Project/ /student/qh8cz/public_html/final_project/
+        header("Location: /qh8cz/final_project/index.html");// /CS-4640-Web-Project/ /student/qh8cz/public_html/final_project/
     }
 
   
