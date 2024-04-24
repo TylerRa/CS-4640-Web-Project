@@ -103,6 +103,7 @@ class Controller {
         $password_regex="/^\S*(?=\S*[a-z])(?=\S*[\d])\S*$/";
         if (!isset($_POST['email'], $_POST['password'],$_POST['confirmpassword'])){
             $_SESSION['errorMessage']="Please fill out all the fields first.";
+            header("Location: signup.php");
             exit;
         } 
         
@@ -114,6 +115,7 @@ class Controller {
         }
         else if (!preg_match($password_regex,$_POST['password'])){
             $_SESSION['errorMessage']="Your password must have at least 1 letter and 1 number.";
+            header("Location: signup.php");
             exit;
         }
         else if ($_POST['password']==$_POST['confirmpassword'] && preg_match($password_regex,$_POST["password"])){
@@ -122,7 +124,8 @@ class Controller {
         
             if (!empty($query)){    
                 $_SESSION['errorMessage']="You already have an account! Please log in";
-                
+                header("Location: signup.php");
+                exit;
             }
             $this->db->query("insert into public.users (email, password) values ($1, $2);",$_POST["email"],password_hash($_POST["password"], PASSWORD_DEFAULT));
 

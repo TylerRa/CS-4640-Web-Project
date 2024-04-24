@@ -42,10 +42,10 @@ unset($_SESSION['errorMessage']);
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ms-auto">
                         <?php if (!isset($_SESSION['email'])):?>
-                            <a class="nav-item nav-link" href="signup.html">Sign Up</a>
-                            <a class="nav-item nav-link" href="login.html">Log In</a>
+                            <a class="nav-item nav-link" href="signup.php">Sign Up</a>
+                            <a class="nav-item nav-link" href="login.php">Log In</a>
                         <?php endif;?>
-                        <a class="nav-item nav-link" href="viewBuilds.html">Builds</a>
+                        <a class="nav-item nav-link" href="viewBuilds.php">Builds</a>
                     </div>
                 </div>
             </div>

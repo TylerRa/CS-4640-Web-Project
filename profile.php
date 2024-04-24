@@ -30,13 +30,13 @@ unset($_SESSION['errorMessage']);
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid justify-content-between">
-                <a class="navbar-brand" href="index.html">League of Legends Damage Calculator</a>
+                <a class="navbar-brand" href="indexhtml.php">League of Legends Damage Calculator</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ms-auto">
-                        <a class="nav-item nav-link" href="viewBuilds.html">Builds</a>
+                        <a class="nav-item nav-link" href="viewBuilds.php">Builds</a>
                         <a class="nav-item nav-link" href="index.php?command=logout">Log Out</a>
                     </div>
                 </div>
