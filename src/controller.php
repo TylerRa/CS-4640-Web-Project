@@ -43,9 +43,7 @@ class Controller {
             case "profile":
                 $this->profile();
                 break;
-            case "calculate":
-                $this->calculate();
-                break;
+        
             case "saveToProfile":
                 $this->saveToProfile();
                 break;
@@ -234,9 +232,6 @@ class Controller {
         header("Location: indexhtml.php");// /CS-4640-Web-Project/ /student/qh8cz/public_html/final_project/
     }
 
-    public function calculate(){
-
-    }
     
     public function saveToProfile(){
         $arr=[

@@ -146,11 +146,7 @@ unset($_SESSION['errorMessage']);
             </button>
             </div>
             <script>
-                document.getElementById('userStatsCalculate').addEventListener('click', function() {
-                    var form = document.getElementById('userStatsForm');
-                    form.action = 'index.php?command=calculate';
-                    form.submit();
-                });
+                
             
                 document.getElementById('userStatsSave').addEventListener('click', function() {
                     var form = document.getElementById('userStatsForm');
