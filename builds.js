@@ -125,3 +125,22 @@ function exportBuild() {
     document.body.removeChild(downloadAnchorNode);
 
 }
+
+function populateBuild(buildNumber) {
+    $.ajax({
+        type: "GET",
+        url: "import.php",
+        dataType: "json",
+        success: function(buildData) {
+            $('#displayAttackDamage').text(buildData.attackDamage);
+            $('#displayAbilityPower').text(buildData.abilityPower);
+            $('#displayAttackSpeed').text(buildData.attackSpeed);
+            $('#displayLethality').text(buildData.lethality);
+            
+            console.log('Build data fetched successfully:', buildData);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching build data:', error);
+        }
+    });
+}
