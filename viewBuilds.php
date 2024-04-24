@@ -256,6 +256,5 @@ unset($_SESSION['errorMessage']);
             document.getElementById("build1").addEventListener("click", populateBuild(1));
             document.getElementById("build2").addEventListener("click", populateBuild(2));
             document.getElementById("build3").addEventListener("click", populateBuild(3));
-
         </script>
     </body>
