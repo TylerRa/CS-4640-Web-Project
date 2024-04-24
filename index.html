@@ -127,13 +127,27 @@
                 </div>
             </form>
             <div style="justify-content: left;">
-            <button id = "calculateButton" class="btn btn-dark">
+            <button id="userStatsCalculate" class="btn btn-dark">
                 Calculate
             </button>
-            <button id = "saveButton" class="btn btn-dark">
+            <button id="userStatsSave" class="btn btn-dark">
                 Save to Profile
             </button>
             </div>
+            <script>
+                document.getElementById('userStatsCalculate').addEventListener('click', function() {
+                    var form = document.getElementById('userStatsForm');
+                    form.action = 'index.php?command=calculate';
+                    form.submit();
+                });
+            
+                document.getElementById('userStatsSave').addEventListener('click', function() {
+                    var form = document.getElementById('userStatsForm');
+                    form.action = 'index.php?command=saveToProfile';
+                    form.submit();
+                });
+            </script>
+            
         </section>
 
         <!--Opponents stats-->

@@ -42,6 +42,13 @@ class Controller {
                 break;
             case "profile":
                 $this->profile();
+                break;
+            case "calculate":
+                $this->calculate();
+                break;
+            case "saveToProfile":
+                $this->saveToProfile();
+                break;
             case "logout":
                 $this->logout();
                 // no break; logout will also show the welcome page.
@@ -68,11 +75,10 @@ class Controller {
         if (!isset($_POST['email'], $_POST['password']) ) {
             $this->errorMessage="Please fill out all the fields first.";
         }
-    
         $query = $this->db->query("select * from public.users where email = $1;",$_POST["email"]);
-        
         if (empty($query)){    
-            header("Location: /qh8cz/final_project/signup.html"); // /CS-4640-Web-Project/ 
+            header("Location: signup.html");
+            exit; 
         }
         
         else{
@@ -82,13 +88,14 @@ class Controller {
                 // session and send them to the question page
                 
                 $_SESSION["email"] = $query[0]["email"]; ///CS-4640-Web-Project/ 
-                header("Location: /qh8cz/final_project/viewBuilds.html");
-                return;
+                header("Location: viewBuilds.html");
+                exit;
             } 
             else {
                 // Password was incorrect
                 $this->errorMessage="Incorrect Password.";
-                header("Location: /qh8cz/final_project/login.html");
+                header("Location: login.html");
+                exit;
                 
             }
     
@@ -104,7 +111,8 @@ class Controller {
         else if ($_POST['password']!=$_POST['confirmpassword']){
             $this->errorMessage="Please make sure your confirmed password matches your password.";
             //echo "<h4>{$this->errorMessage}</h4>";
-            header("Location: /qh8cz/final_project/signup.html");
+            header("Location: signup.html");
+            exit;
         
         }
         else if (!preg_match($password_regex,$_POST['password'])){
@@ -126,7 +134,8 @@ class Controller {
 
                     //$_SESSION["email"] = $_POST["email"];
         ///CS-4640-Web-Project/ 
-            header("Location: /qh8cz/final_project/viewBuilds.html");
+            header("Location: viewBuilds.html");
+            exit;
         }
     }
    /*
@@ -186,26 +195,39 @@ class Controller {
     }
     
     public function profile(){
-        $query = $this->db->query("select * from public.users where email = $1;",$_SESSION["email"]);
-
-        $password_regex="^\S*(?=\S*[a-z])(?=\S*[\d])\S*$";
+        $query=$this->db->query("select * from public.users where email = $1;",$_SESSION["email"]);
+        $_SESSION['email']=
+        $password_regex="/^\S*(?=\S*[a-z])(?=\S*[\d])\S*$/";
         if (!isset($_POST['password'],$_POST['confirmpassword'])){
-            $this->errorMessage="Please fill out all the fields first.";
-        
+            $_SESSION['errorMessage']="Please fill out all the fields first.";
+            header("Location: profile.php");
+            exit;
         } 
    
         else if ($_POST['password']!=$_POST['confirmpassword']){
-            $this->errorMessage="Please make sure your confirmed password matches the password.";
+            $_SESSION['errorMessage']="Please make sure your confirmed password matches the password.";
+            header("Location: profile.php");
+            exit;
+        }
+        if ($_POST['password']==$_POST['confirmpassword']){
+            if (!preg_match($password_regex,$_POST['password'])){
+                $_SESSION['errorMessage']="Your new password must have at least 1 letter and 1 number."; 
+                header("Location: profile.php");
+                exit;
+            }
+            else if ($_POST["password"]==password_verify($query[0]['password'],PASSWORD_DEFAULT)){
+                $_SESSION['errorMessage']="Your password must be different than the original!";
+                header("Location: profile.php");
+                exit;
+            }
+            else if (preg_match($password_regex,$_POST["password"]) && $_POST["password"]!=password_verify($query[0]['password'],PASSWORD_DEFAULT)){
+                $this->db->query("update public.users set password = $1 where email = $2;",password_hash($_POST["password"],PASSWORD_DEFAULT),$_SESSION["email"]);
+                $_SESSION['errorMessage']="Your password has been updated successfully.";
+                header("Location: profile.php");
+                exit;
+            }
         
         }
-        else if (!preg_match($password_regex,$_POST['password'])){
-            $this->errorMessage="Your password must have at least 1 letter and 1 number."; 
-        }
-        else if ($_POST['password']==$_POST['confirmpassword'] && preg_match($password_regex,$_POST["password"])){
-        $query=$this->db->query("update public.users set password = $1 where email = $2;",password_hash($_POST["password"],PASSWORD_DEFAULT),$_SESSION["email"]);
-            $this->errorMessage="Your password has been updated successfully.";
-        
-    }
 
     }
     /**
@@ -217,8 +239,14 @@ class Controller {
         if (!empty($this->errorMessage)) {
             $message = "<div class='alert alert-danger'>{$this->errorMessage}</div>";
         }
-        header("Location: /qh8cz/final_project/index.html");// /CS-4640-Web-Project/ /student/qh8cz/public_html/final_project/
+        header("Location: index.html");// /CS-4640-Web-Project/ /student/qh8cz/public_html/final_project/
     }
 
-  
+    public function calculate(){
+
+    }
+    
+    public function saveToProfile(){
+        
+    }
 }

@@ -1,3 +1,8 @@
+<?php
+session_start();
+$errorMessage = isset($_SESSION['errorMessage']) ? $_SESSION['errorMessage'] : '';
+unset($_SESSION['errorMessage']); 
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -31,8 +36,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ms-auto">
-                        <a class="nav-item nav-link" href="profile.html">Profile</a>
                         <a class="nav-item nav-link" href="viewBuilds.html">Builds</a>
+                        <a class="nav-item nav-link" href="index.php?command=logout">Log Out</a>
                     </div>
                 </div>
             </div>
@@ -40,12 +45,17 @@
         <div>
 			<h2>Profile Page</h2>
             <h4>Hello, you're logged in as <?php echo $_SESSION['email']; ?></h4>
+            <?php if (!empty($errorMessage)): ?>
+                <div class="alert alert-success" >
+                <?php echo $errorMessage; ?>
+                </div>
+            <?php endif; ?>
 			<div class="card-body">
                                     <!--/opt/src/-->
                     <form action="index.php?command=profile" method="post">
                         <div class="form-group">
                             <label for="inputemail">Change your password:</label>
-                            <input type="password" name="password"  class="form-control" id="password" placeholder="New password:" required>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="New password:" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Confirm your new password:</label>
