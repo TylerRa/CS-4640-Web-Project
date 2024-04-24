@@ -43,6 +43,12 @@ class Controller {
             case "profile":
                 $this->profile();
                 break;
+            case "calculate":
+                $this->calculate();
+                break;
+            case "saveToProfile":
+                $this->saveToProfile();
+                break;
             case "logout":
                 $this->logout();
                 // no break; logout will also show the welcome page.
@@ -69,12 +75,10 @@ class Controller {
         if (!isset($_POST['email'], $_POST['password']) ) {
             $this->errorMessage="Please fill out all the fields first.";
         }
-    
         $query = $this->db->query("select * from public.users where email = $1;",$_POST["email"]);
-        
         if (empty($query)){    
             header("Location: signup.html");
-            exit; // /CS-4640-Web-Project/ 
+            exit; 
         }
         
         else{
@@ -192,7 +196,7 @@ class Controller {
     
     public function profile(){
         $query=$this->db->query("select * from public.users where email = $1;",$_SESSION["email"]);
-
+        $_SESSION['email']=
         $password_regex="/^\S*(?=\S*[a-z])(?=\S*[\d])\S*$/";
         if (!isset($_POST['password'],$_POST['confirmpassword'])){
             $_SESSION['errorMessage']="Please fill out all the fields first.";
@@ -238,5 +242,11 @@ class Controller {
         header("Location: index.html");// /CS-4640-Web-Project/ /student/qh8cz/public_html/final_project/
     }
 
-  
+    public function calculate(){
+
+    }
+    
+    public function saveToProfile(){
+        
+    }
 }
