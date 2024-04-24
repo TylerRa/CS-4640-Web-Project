@@ -26,6 +26,8 @@ unset($_SESSION['errorMessage']);
         <meta property="og:site_name" content="League of Legends Damage Calculator"> 
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet/less" type="text/css" href="styles/custom.less" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     </head>
 
     <body>
@@ -56,7 +58,7 @@ unset($_SESSION['errorMessage']);
         <!--build1-->
         <section class = "card mx-2 mt-2">
             <h2> build 1</h2>
-            <div class = "image-row flexbox">
+            <div id="images1" class = "image-row flexbox">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
@@ -65,7 +67,7 @@ unset($_SESSION['errorMessage']);
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
 
             </div>
-            <div class="card-body">
+            <div id="build1" class="card-body">
                 <h3>Your Champion's Stats</h3>
                 <div>
                     <strong>Attack Damage:</strong> <span id="displayAttackDamage">0</span>
@@ -118,8 +120,8 @@ unset($_SESSION['errorMessage']);
         </section>
         <!--build2-->
         <section class = "card mx-2 mt-2">
-            <h2>build 1</h2>
-            <div class = "image-row flexbox">
+            <h2>build 2</h2>
+            <div id="images2" class = "image-row flexbox">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
 
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
@@ -130,7 +132,7 @@ unset($_SESSION['errorMessage']);
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
             </div>
-            <div class="card-body">
+            <div id="build2" class="card-body">
                 <h3>Your Champion's Stats</h3>
                 <div>
                     <strong>Attack Damage:</strong> <span id="displayAttackDamage2">0</span>
@@ -183,7 +185,7 @@ unset($_SESSION['errorMessage']);
         <!--build3-->
         <section class = "card mx-2 mt-2">
             <h2>build 3</h2>
-            <div class = "image-row flexbox">
+            <div id= "images3"class = "image-row flexbox">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
@@ -192,7 +194,7 @@ unset($_SESSION['errorMessage']);
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
             </div>
         
-            <div class="card-body">
+            <div id="buid3" class="card-body">
                 <h3>Your Champion's Stats</h3>
                 <div>
                     <strong>Attack Damage:</strong> <span id="displayAttackDamage3">0</span>
@@ -249,4 +251,11 @@ unset($_SESSION['errorMessage']);
                 &copy; Tyler Rasmussen, Isabella Huang, 2024
             </small>
         </footer>
+
+        <script>
+            document.getElementById("build1").addEventListener("click", populateBuild(1));
+            document.getElementById("build2").addEventListener("click", populateBuild(2));
+            document.getElementById("build3").addEventListener("click", populateBuild(3));
+
+        </script>
     </body>
