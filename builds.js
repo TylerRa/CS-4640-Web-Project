@@ -52,6 +52,13 @@ function calculateDps() {
         var statValue = parseFloat($(element).find('input').val()); // Get the input value as the stat value
         stats[statName] = statValue; 
     });
+    
+    // Retrieve opponent input stats
+    $("#opponentStatsForm").children().each(function(index, element) {
+        var statName = $(element).find('label').text().trim(); // Get the label text as the stat name
+        var statValue = parseFloat($(element).find('input').val()); // Get the input value as the stat value
+        stats[statName] = statValue; 
+    } )
 
     // Extract individual stats from the stats object
     var physicalDamage = stats['Attack Damage'];
