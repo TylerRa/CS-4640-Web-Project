@@ -89,6 +89,7 @@ function calculateDps() {
     console.log(mitigatedDamage);
     var dps = mitigatedDamage * attackSpeed;
     console.log(dps);
+    return dps;
     $("#dpsBox").val(dps);
 }
 
@@ -118,13 +119,13 @@ function exportBuild() {
 function populateBuild(buildNumber) {
     $.ajax({
         type: "GET",
-        url: "import.php",
-        dataType: "json",
+        url: "index.php?command=retrieveBuilds",
+        dataType: "json", //get array of build objects
         success: function(buildData) {
-            $('#displayAttackDamage').text(buildData.attackDamage);
-            $('#displayAbilityPower').text(buildData.abilityPower);
-            $('#displayAttackSpeed').text(buildData.attackSpeed);
-            $('#displayLethality').text(buildData.lethality);
+            $('#attackDamage').text(buildData.attackDamage);
+            $('#abilityPower').text(buildData.abilityPower);
+            $('#attackSpeed').text(buildData.attackSpeed);
+            $('#lethality').text(buildData.lethality);
             
             console.log('Build data fetched successfully:', buildData);
         },
