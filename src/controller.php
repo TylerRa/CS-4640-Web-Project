@@ -225,7 +225,7 @@ class Controller {
      * Show the welcome page to the user.
      */
     public function showWelcome() {
-        header("Location: indexhtml.php");// /CS-4640-Web-Project/ /student/qh8cz/public_html/final_project/
+        header("Location: indexhtml.php");
     }
     
     public function saveToProfile(){
@@ -257,14 +257,14 @@ class Controller {
         $curBuilds[]=$arr;
         $newBuild=json_encode($curBuilds);
         $this->db->query("update public.users set builds=$1 where email=$2;",$newBuild,$_SESSION['email']);
-        $_SESSION['errorMessage']="Successfully saved champioin stats to profile.";
+        $_SESSION['errorMessage']="Successfully saved champion stats to profile.";
         header("Location: indexhtml.php");
         exit;
     }
 
     public function retrieveBuilds(){
         $builds=$this->db->query("select builds from public.users where email=$1;",$_SESSION['email']);
-        echo $builds;
-        header("Location: viewBuilds.php");
+        echo json_encode($builds);
+        //header("Location: viewBuilds.php");
     }
 }
