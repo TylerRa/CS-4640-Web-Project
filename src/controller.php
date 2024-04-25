@@ -256,6 +256,7 @@ class Controller {
        
         $curBuilds[]=$arr;
         $newBuild=json_encode($curBuilds);
+        $this->db->query("insert into public.builds (email, build) values ($1, $2)",$_SESSION['email'],json_encode($arr));
         $this->db->query("update public.users set builds=$1 where email=$2;",$newBuild,$_SESSION['email']);
         $_SESSION['errorMessage']="Successfully saved champion stats to profile.";
         header("Location: indexhtml.php");
@@ -267,4 +268,5 @@ class Controller {
         echo json_encode($builds);
         //header("Location: viewBuilds.php");
     }
+
 }
