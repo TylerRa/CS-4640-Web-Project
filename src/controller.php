@@ -225,7 +225,7 @@ class Controller {
      * Show the welcome page to the user.
      */
     public function showWelcome() {
-        header("Location: indexhtml.php");// /CS-4640-Web-Project/ /student/qh8cz/public_html/final_project/
+        header("Location: indexhtml.php");
     }
     
     public function saveToProfile(){
@@ -244,20 +244,29 @@ class Controller {
         
         if ($_SESSION['email']===null){
             $_SESSION['errorMessage']="Please sign up or log in first to save your builds.";
+            header("Location: indexhtml.php");
             exit;
         }
         $query=$this->db->query("select * from public.users where email=$1;",$_SESSION['email']);
-        $curBuilds=json_decode($query[0]['builds']);
-        if (($curBuilds===null)){
-            $curBuilds=[];
+        
+        $curBuilds=[];
+        if (($query[0]['builds']!=null)){
+            $curBuilds=json_decode($query[0]['builds']);
         }
+       
         $curBuilds[]=$arr;
         $newBuild=json_encode($curBuilds);
+        $this->db->query("insert into public.builds (email, build) values ($1, $2)",$_SESSION['email'],json_encode($arr));
         $this->db->query("update public.users set builds=$1 where email=$2;",$newBuild,$_SESSION['email']);
+        $_SESSION['errorMessage']="Successfully saved champion stats to profile.";
+        header("Location: indexhtml.php");
+        exit;
     }
 
     public function retrieveBuilds(){
         $builds=$this->db->query("select builds from public.users where email=$1;",$_SESSION['email']);
-        echo $builds;
+        echo json_encode($builds);
+        //header("Location: viewBuilds.php");
     }
+
 }
