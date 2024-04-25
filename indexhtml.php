@@ -46,6 +46,9 @@ unset($_SESSION['errorMessage']);
                             <a class="nav-item nav-link" href="login.php">Log In</a>
                         <?php endif;?>
                         <a class="nav-item nav-link" href="viewBuilds.php">Builds</a>
+                        <?php if (isset($_SESSION['email'])):?>
+                            <a class="nav-item nav-link" href="index.php?command=logout">Log Out</a>
+                        <?php endif;?>
                     </div>
                 </div>
             </div>
@@ -146,8 +149,6 @@ unset($_SESSION['errorMessage']);
             </button>
             </div>
             <script>
-                
-            
                 document.getElementById('userStatsSave').addEventListener('click', function() {
                     var form = document.getElementById('userStatsForm');
                     form.action = 'index.php?command=saveToProfile';

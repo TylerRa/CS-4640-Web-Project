@@ -4,9 +4,6 @@ class Controller {
 
     private $db;
 
-    // An error message to display on the welcome page
-    private $errorMessage = "";
-
     /**
      * Constructor
      */
@@ -47,6 +44,8 @@ class Controller {
             case "saveToProfile":
                 $this->saveToProfile();
                 break;
+            case "retrieveBuilds":
+                $this->retrieveBuilds();
             case "logout":
                 $this->logout();
                 // no break; logout will also show the welcome page.
@@ -72,6 +71,7 @@ class Controller {
     public function login() {
         if (!isset($_POST['email'], $_POST['password']) ) {
             $_SESSION['errorMessage']="Please fill out all the fields first.";
+            header("Location: login.php");
             exit;
         }
         $query = $this->db->query("select * from public.users where email = $1;",$_POST["email"]);
@@ -82,9 +82,7 @@ class Controller {
         }
         
         else{
-            //var_dump($query[0]["password"]);
             if (password_verify($_POST["password"], $query[0]["password"])) {
-                
                 $_SESSION["email"] = $query[0]["email"]; 
                 header("Location: viewBuilds.php");
                 exit;
@@ -94,7 +92,6 @@ class Controller {
                 header("Location: login.php");
                 exit;
             }
-    
         }
     }
     public function signUp(){
@@ -228,10 +225,8 @@ class Controller {
      * Show the welcome page to the user.
      */
     public function showWelcome() {
-        
         header("Location: indexhtml.php");// /CS-4640-Web-Project/ /student/qh8cz/public_html/final_project/
     }
-
     
     public function saveToProfile(){
         $arr=[
@@ -247,7 +242,7 @@ class Controller {
             'onHitMagicDamage' => $_POST['onHitMagicDamage']
         ];
         
-        if (!isset($_SESSION['email'])){
+        if ($_SESSION['email']===null){
             $_SESSION['errorMessage']="Please sign up or log in first to save your builds.";
             exit;
         }
@@ -259,6 +254,10 @@ class Controller {
         $curBuilds[]=$arr;
         $newBuild=json_encode($curBuilds);
         $this->db->query("update public.users set builds=$1 where email=$2;",$newBuild,$_SESSION['email']);
-        
+    }
+
+    public function retrieveBuilds(){
+        $builds=$this->db->query("select builds from public.users where email=$1;",$_SESSION['email']);
+        echo $builds;
     }
 }
