@@ -244,6 +244,7 @@ class Controller {
         
         if ($_SESSION['email']===null){
             $_SESSION['errorMessage']="Please sign up or log in first to save your builds.";
+            header("Location: indexhtml.php");
             exit;
         }
         $query=$this->db->query("select * from public.users where email=$1;",$_SESSION['email']);
@@ -256,10 +257,12 @@ class Controller {
         $curBuilds[]=$arr;
         $newBuild=json_encode($curBuilds);
         $this->db->query("update public.users set builds=$1 where email=$2;",$newBuild,$_SESSION['email']);
+        header("Location: indexhtml.php");
     }
 
     public function retrieveBuilds(){
         $builds=$this->db->query("select builds from public.users where email=$1;",$_SESSION['email']);
         echo $builds;
+        header("Location: viewBuilds.php");
     }
 }
