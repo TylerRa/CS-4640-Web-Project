@@ -161,7 +161,7 @@ unset($_SESSION['errorMessage']);
         <!--Opponents stats-->
         <section class = "card flexbox opponentTheme">
             <h2>Your opponent's stats</h2>
-            <form id = "opponentStatsForm">
+            <form id="opponentStatsForm" >
                 <div class="form-group">
                     <label for="armor">Armor</label>
                     <input type="text" class="form-control" id="armor" aria-describedby="armorHelp" placeholder="Enter armor">

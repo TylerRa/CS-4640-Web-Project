@@ -247,10 +247,12 @@ class Controller {
             exit;
         }
         $query=$this->db->query("select * from public.users where email=$1;",$_SESSION['email']);
-        $curBuilds=json_decode($query[0]['builds']);
-        if (($curBuilds===null)){
-            $curBuilds=[];
+        
+        $curBuilds=[];
+        if (($query[0]['builds']!=null)){
+            $curBuilds=json_decode($query[0]['builds']);
         }
+       
         $curBuilds[]=$arr;
         $newBuild=json_encode($curBuilds);
         $this->db->query("update public.users set builds=$1 where email=$2;",$newBuild,$_SESSION['email']);
