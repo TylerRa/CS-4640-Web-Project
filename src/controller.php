@@ -257,7 +257,9 @@ class Controller {
         $curBuilds[]=$arr;
         $newBuild=json_encode($curBuilds);
         $this->db->query("update public.users set builds=$1 where email=$2;",$newBuild,$_SESSION['email']);
+        $_SESSION['errorMessage']="Successfully saved champioin stats to profile.";
         header("Location: indexhtml.php");
+        exit;
     }
 
     public function retrieveBuilds(){
