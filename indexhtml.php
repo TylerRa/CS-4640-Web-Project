@@ -202,7 +202,7 @@ unset($_SESSION['errorMessage']);
         <script>
             document.getElementById('exportButton').addEventListener('click', exportBuild);
             // Event listener for the Calculate button
-            document.getElementById('userStatsCalculate').addEventListener('click', calculateDps);
+            document.getElementById('userStatsCalculate').addEventListener('click', () => $("#dpsBox").val(calculateDps()));
             // Event listener for the Save to Profile button
             document.getElementById('userStatsSave').addEventListener('click', saveBuild);
 

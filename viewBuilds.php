@@ -252,10 +252,9 @@ unset($_SESSION['errorMessage']);
                 &copy; Tyler Rasmussen, Isabella Huang, 2024
             </small>
         </footer>
+        <script src = builds.js></script>
 
         <script>
-            document.getElementById("build1").addEventListener("click", populateBuild(1));
-            document.getElementById("build2").addEventListener("click", populateBuild(2));
-            document.getElementById("build3").addEventListener("click", populateBuild(3));
+            loadBuilds();
         </script>
     </body>
