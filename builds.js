@@ -7,7 +7,7 @@ function saveBuild() {
 
     $.ajax({
         type: "POST",
-        url: "save_build.php", //Todo: add to controller save build handling
+        url: "index.php?command=saveToProfile", //Todo: add to controller save build handling
         data: { stats: JSON.stringify(stats) }, // Send the 'stats' array as JSON data
         success: function(response) {
             console.log("Build saved successfully.");
@@ -21,12 +21,12 @@ function saveBuild() {
 function clearBuild() {
     $("#userStatsForm")[0].reset();
 }
-
+// load a build on the index page
 function loadBuild() {
 
     $.ajax({
         type: "GET",
-        url: "get_build.php", // Todo: add to controller
+        url: "index.php?command=loadBuild", // Todo: add to controller
         success: function(response) {
             var stats = JSON.parse(response);
             $("#userStatsForm").children().each(function(index, element) {
@@ -132,4 +132,26 @@ function populateBuild(buildNumber) {
             console.error('Error fetching build data:', error);
         }
     });
+}
+// load users builds from profile
+function loadBuilds() {
+    var builds = [];
+    $.ajax({
+        type: "GET",
+        url: "index.php?command=loadBuilds",
+        data: { buildNumber : 0,
+                userID : 0 },
+        dataType: "array", //get array of jsons
+        success: function(buildData) {
+            for (i = 0; i < buildData.length; i++) {
+                //update DOM with data
+                
+            }
+
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching build data:', error);
+        }
+    })
+
 }
