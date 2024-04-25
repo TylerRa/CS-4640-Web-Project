@@ -46,8 +46,8 @@ unset($_SESSION['errorMessage']);
                             <a class="nav-item nav-link" href="signup.php">Sign Up</a>
                             <a class="nav-item nav-link" href="login.php">Log In</a>
                         <?php endif;?>
-                        <a class="nav-item nav-link" href="viewBuilds.php">Builds</a>
                         <?php if (isset($_SESSION['email'])):?>
+                            <a class="nav-item nav-link" href="viewBuilds.php">Builds</a>
                             <a class="nav-item nav-link" href="index.php?command=logout">Log Out</a>
                         <?php endif;?>
                     </div>
