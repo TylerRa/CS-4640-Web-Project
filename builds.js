@@ -26,9 +26,11 @@ function loadBuild() {
 
     $.ajax({
         type: "GET",
-        url: "index.php?command=loadBuild", // Todo: add to controller
+        url: "index.php?command=retrieveBuilds", // Todo: add to controller
+        // could add dataTyper here so dont have to parse later
         success: function(response) {
-            var stats = JSON.parse(response);
+            var builds = JSON.parse(response);
+            var stats = builds[0]
             $("#userStatsForm").children().each(function(index, element) {
                 $(element).val(stats[index]);
             });
@@ -90,6 +92,7 @@ function calculateDps() {
     var dps = mitigatedDamage * attackSpeed;
     console.log(dps);
     return dps;
+    // not done here so we can used arrow function later
     $("#dpsBox").val(dps);
 }
 
@@ -115,7 +118,7 @@ function exportBuild() {
     document.body.removeChild(downloadAnchorNode);
 
 }
-
+// think this is unused
 function populateBuild(buildNumber) {
     $.ajax({
         type: "GET",
