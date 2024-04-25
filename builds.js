@@ -138,14 +138,40 @@ function loadBuilds() {
     var builds = [];
     $.ajax({
         type: "GET",
-        url: "index.php?command=loadBuilds",
-        data: { buildNumber : 0,
-                userID : 0 },
-        dataType: "array", //get array of jsons
+        url: "index.php?command=retrieveBuilds",
+        dataType: "json", //get array of build objects
         success: function(buildData) {
-            for (i = 0; i < buildData.length; i++) {
+            $('#displayAttackDamage').text(buildData[0].attackDamage);
+            $('#displayAbilityPower').text(buildData[0].abilityPower);
+            $('#displayAttackSpeed').text(buildData[0].attackSpeed);
+            $('#displayLethality').text(buildData[0].lethality);
+            $('#displayCriticalStrikeChance').text(buildData[0].criticalStrikeChance);
+            $('#displayArmorPenetration').text(buildData[0].armorPenetration);
+            $('#displayMagicPenetration').text(buildData[0].magicPenetration);
+            $('#displayOnHitPhysicalDamage').text(buildData[0].onHitPhysicalDamage);
+            $('#displayOnHitTrueDamage').text(buildData[0].onHitTrueDamage);
+            $('#displayOnHitMagicDamage').text(buildData[0].onHitMagicDamage);
+            $('#displayArmor').text(buildData[0].armor);
+            $('#displayMagicResistance').text(buildData[0].magicResistance);
+            $('#displayHealthPoints').text(buildData[0].healthPoints);
+            $('#displayPercentDamageReduction').text(buildData[0].percentDamageReduction);
+            for (i = 1; i < buildData.length; i++) {
                 //update DOM with data
-                
+                $('#displayAttackDamage' + (i)).text(buildData[i].attackDamage);
+                $('#displayAbilityPower' + (i)).text(buildData[i].abilityPower);
+                $('#displayAttackSpeed' + (i)).text(buildData[i].attackSpeed);
+                $('#displayLethality' + (i)).text(buildData[i].lethality);
+                $('#displayCriticalStrikeChance'+ (i)).text(buildData[i].criticalStrikeChance);
+                $('#displayArmorPenetration'+ (i)).text(buildData[i].armorPenetration);
+                $('#displayMagicPenetration' + (i)).text(buildData[i].magicPenetration);
+                $('#displayOnHitPhysicalDamage' + (i)).text(buildData[i].onHitPhysicalDamage);
+                $('#displayOnHitTrueDamage' + (i)).text(buildData[i].onHitTrueDamage);
+                $('#displayOnHitMagicDamage' + (i)).text(buildData[i].onHitMagicDamage);
+                $('#displayArmor' + (i)).text(buildData[i].armor);
+                $('#displayMagicResistance' + (i)).text(buildData[i].magicResistance);
+                $('#displayHealthPoints' + (i)).text(buildData[i].healthPoints);
+                $('#displayPercentDamageReduction' + (i)).text(buildData[i].percentDamageReduction);
+
             }
 
         },
