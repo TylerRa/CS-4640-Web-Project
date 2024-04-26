@@ -268,23 +268,12 @@ class Controller {
         $query=$this->db->query("select * from public.users where email=$1;",$_SESSION['email']);
         //var_dump($query[0]['builds']);
         if ($query[0]['builds']!=null){
-            echo json_encode($query[0]['builds']);
+            echo $query[0]['builds'];
             exit;
         }
         else{
-            $arr=[
-                'attackDamage' => "",
-                'abilityPower' => "",
-                'attackSpeed' => "",
-                'lethality' => "",
-                'criticalStrikeChance' => "",
-                'armorPenetration' => "",
-                'magicPenetration' => "",
-                'onHitPhysicalDamage' => "",
-                'onHitTrueDamage' =>"",
-                'onHitMagicDamage' => ""
-            ];
-            echo json_encode($arr);
+            
+            echo json_encode([]);
             exit;
         }
         exit;

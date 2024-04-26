@@ -147,10 +147,36 @@ function loadViewBuilds() {
         type: "GET",
         url: "index.php?command=retrieveBuilds",
         dataType: "json", //get array of build objects
-        success: function(response) {
-           
-            var buildData = JSON.parse(response);
-            console.log(buildData[0]);
+        success: function(buildData) {
+           // var buildData = JSON.parse(response);
+           $("#buildsContainer").empty();
+            console.log(buildData);
+
+            if (buildData.length==0){
+                var alert=$('<div>').addClass('alert alert-success').text("You haven't saved any builds yet!");
+                $("#buildsContainer").append(alert);
+            }
+            
+            
+            $.each(buildData, function(index, build) {
+                var buildCard = $('<section>').addClass('card mx-2 mt-2');
+                var cardBody = $('<div>').addClass('card-body');
+
+                $.each(build, function(stat, value) {
+             
+                    var statDiv = $('<div>');
+                    var statStrong = $('<strong>').text(stat.replace(/([A-Z])/g, ' $1').trim().toLowerCase() + ': ');
+                    var statSpan = $('<span>').text(value);
+                    
+                    statDiv.append(statStrong, statSpan);
+                    cardBody.append(statDiv);
+                });
+                buildCard.append($('<img>',{src:"toto2.jpg",alt:"placeholder",class:"buildimage"}));
+                buildCard.append($('<h2>').text('Build ' + (index + 1)), cardBody);
+                
+                $("#buildsContainer").append(buildCard);
+            });
+            /*
             $('#displayAttackDamage').text(buildData[0].attackDamage);
             $('#displayAbilityPower').text(buildData[0].abilityPower);
             $('#displayAttackSpeed').text(buildData[0].attackSpeed);
@@ -181,9 +207,7 @@ function loadViewBuilds() {
                 $('#displayMagicResistance' + (i)).text(buildData[i].magicResistance);
                 $('#displayHealthPoints' + (i)).text(buildData[i].healthPoints);
                 $('#displayPercentDamageReduction' + (i)).text(buildData[i].percentDamageReduction);
-
-            }
-
+            */
         },
         error: function(xhr, status, error) {
             console.error('Error fetching build data:', error);

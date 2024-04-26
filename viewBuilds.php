@@ -58,7 +58,9 @@ unset($_SESSION['errorMessage']);
         </header>
 
         <!--build1-->
-        <section class = "card mx-2 mt-2" >
+        <div id="buildsContainer">
+            <!--
+        <section id="build1" class = "card mx-2 mt-2" >
             <h2> build 1</h2>
             <div id="images1" class = "image-row flexbox">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
@@ -69,7 +71,7 @@ unset($_SESSION['errorMessage']);
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
 
             </div>
-            <div id="build1" class="card-body">
+            <div class="card-body">
                 <h3>Your Champion's Stats</h3>
                 <div>
                     <strong>Attack Damage:</strong> <span id="displayAttackDamage"></span>
@@ -101,18 +103,7 @@ unset($_SESSION['errorMessage']);
                 <div>
                     <strong>On-Hit Magic Damage:</strong> <span id="displayOnHitMagicDamage"></span>
                 </div>
-                <div>
-                    <strong>Armor:</strong> <span id="displayArmor"></span>
-                </div>
-                <div>
-                    <strong>Magic Resistance:</strong> <span id="displayMagicResistance"></span>
-                </div>
-                <div>
-                    <strong>Health Points:</strong> <span id="displayHealthPoints"></span>
-                </div>
-                <div>
-                    <strong>Percent Damage Reduction:</strong> <span id="displayPercentDamageReduction"></span>
-                </div>
+                
                 <div>
                     <a class="btn btn-secondary mx-1" href="#">Import</a>
                     <a class="btn btn-secondary mx-1" href="#$">Export</a>
@@ -120,8 +111,8 @@ unset($_SESSION['errorMessage']);
             </div>
 
         </section>
-        <!--build2-->
-        <section class = "card mx-2 mt-2">
+        
+        <section id="build2" class = "card mx-2 mt-2">
             <h2>build 2</h2>
             <div id="images2" class = "image-row flexbox">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
@@ -134,7 +125,7 @@ unset($_SESSION['errorMessage']);
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
             </div>
-            <div id="build2" class="card-body">
+            <div class="card-body">
                 <h3>Your Champion's Stats</h3>
                 <div>
                     <strong>Attack Damage:</strong> <span id="displayAttackDamage2"></span>
@@ -166,26 +157,15 @@ unset($_SESSION['errorMessage']);
                 <div>
                     <strong>On-Hit Magic Damage:</strong> <span id="displayOnHitMagicDamage2"></span>
                 </div>
-                <div>
-                    <strong>Armor:</strong> <span id="displayArmor2"></span>
-                </div>
-                <div>
-                    <strong>Magic Resistance:</strong> <span id="displayMagicResistance2"></span>
-                </div>
-                <div>
-                    <strong>Health Points:</strong> <span id="displayHealthPoints2"></span>
-                </div>
-                <div>
-                    <strong>Percent Damage Reduction:</strong> <span id="displayPercentDamageReduction2"></span>
-                </div>
+              
                 <div>
                     <a class="btn btn-secondary mx-1" href="#">Import</a>
                     <a class="btn btn-secondary mx-1" href="#$">Export</a>
                 </div>
             </div> 
         </section>
-        <!--build3-->
-        <section class = "card mx-2 mt-2">
+        
+        <section id="build3"class = "card mx-2 mt-2">
             <h2>build 3</h2>
             <div id= "images3"class = "image-row flexbox">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
@@ -196,7 +176,7 @@ unset($_SESSION['errorMessage']);
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
             </div>
         
-            <div id="buid3" class="card-body">
+            <div  class="card-body">
                 <h3>Your Champion's Stats</h3>
                 <div>
                     <strong>Attack Damage:</strong> <span id="displayAttackDamage3"></span>
@@ -228,26 +208,15 @@ unset($_SESSION['errorMessage']);
                 <div>
                     <strong>On-Hit Magic Damage:</strong> <span id="displayOnHitMagicDamage3"></span>
                 </div>
-                <div>
-                    <strong>Armor:</strong> <span id="displayArmor3"></span>
-                </div>
-                <div>
-                    <strong>Magic Resistance:</strong> <span id="displayMagicResistance3"></span>
-                </div>
-                <div>
-                    <strong>Health Points:</strong> <span id="displayHealthPoints3"></span>
-                </div>
-                <div>
-                    <strong>Percent Damage Reduction:</strong> <span id="displayPercentDamageReduction3"></span>
-                </div>
+               
                 <div class="mt-2">
                     <a class="btn btn-secondary mx-1" href="#">Import</a>
                     <a class="btn btn-secondary mx-1" href="#$">Export</a>
                 </div>
             </div>
             
-        </section>
-
+        </section> -->
+        </div>
         <footer>
             <small>
                 &copy; Tyler Rasmussen, Isabella Huang, 2024
