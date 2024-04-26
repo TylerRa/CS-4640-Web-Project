@@ -31,6 +31,7 @@ unset($_SESSION['errorMessage']);
     </head>
 
     <body>
+        <div id="errorContainer" class="alert alert-success"></div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             
             <div class="container-fluid justify-content-between">
@@ -51,18 +52,22 @@ unset($_SESSION['errorMessage']);
 
         window.onload = function() {
             if (errorMessage) {
-                var errorDiv = document.createElement('div');
-                errorDiv.className = 'alert alert-success';
-                errorDiv.innerHTML = errorMessage;
-                document.body.insertBefore(errorDiv, document.body.firstChild);
+                var errorContainer=document.getElementById("errorContainer");
+                errorContainer.style.display="flex";
+                errorContainer.innerHTML=errorMessage;
+            }
+            else{
+            errorContainer.style.display = 'none';
             }
         }
+
+        
     </script>
         <section>
            
             <div class="row mx-auto">
                 <div class="col mx-2 mt-2 border"> <!--/students/qh8cz/students/qh8cz/private/-->
-                    <form action="index.php?command=signUp" method="post"> 
+                    <form action="index.php?command=signUp" method="post" id="signupForm"> 
                         <h2>Sign Up:</h2>
                         <div class="form-group">
                             <label for="InputEmail1">Email address:</label>
@@ -94,6 +99,54 @@ unset($_SESSION['errorMessage']);
                         </div>
                         <button class="btn btn-primary" type = "submit" >Log In</button>
                     </form>
+
+                    <script>
+                        
+                        document.getElementById('signupForm').addEventListener('submit',function(){
+                            
+                            var errorMessage="";
+                            var errorContainer=document.getElementById("errorContainer");
+                            
+                            errorContainer.innerHTML=errorMessage;
+                            var email = document.getElementById('InputEmail1').value;
+                            var password = document.getElementById('password').value;
+                            var confirmPassword = document.getElementById('confirmpassword').value;
+                            if (!email || !password || !confirmPassword) {
+                                errorMessage = 'Please fill out all the fields first.'; 
+                                errorContainer.innerHTML=errorMessage;
+                                event.preventDefault(); 
+                                
+                            }
+                            if (password !== confirmPassword) {
+                                errorMessage = 'Please make sure your confirmed password matches your password.';
+                                errorContainer.innerHTML=errorMessage;
+                                event.preventDefault(); 
+                            
+                            }
+                            
+                            if (password !== confirmPassword) {
+                                errorMessage = 'Please make sure your confirmed password matches your password.';
+                                errorContainer.innerHTML=errorMessage;
+                                event.preventDefault(); 
+                            
+                            }
+
+                            var passwordRegex = /^\S*(?=\S*[a-z])(?=\S*[\d])\S*$/;
+                            if (!passwordRegex.test(password)) {
+                                errorMessage = 'Your password must have at least 1 letter and 1 number.';
+                                errorContainer.innerHTML=errorMessage;
+                                event.preventDefault(); 
+                
+                            }
+                            if (errorMessage){
+                                errorContainer.style.display="flex";
+                            }
+                            else{
+                                errorContainer.style.display="none";
+                            }
+                            
+                        });
+                    </script>
                 </div>
             </div>
         </section>

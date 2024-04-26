@@ -94,7 +94,7 @@ class Controller {
             }
         }
     }
-    public function signUp(){
+    public function signUp(){/*
         $password_regex="/^\S*(?=\S*[a-z])(?=\S*[\d])\S*$/";
         if (!isset($_POST['email'], $_POST['password'],$_POST['confirmpassword'])){
             $_SESSION['errorMessage']="Please fill out all the fields first.";
@@ -112,8 +112,8 @@ class Controller {
             $_SESSION['errorMessage']="Your password must have at least 1 letter and 1 number.";
             header("Location: signup.php");
             exit;
-        }
-        else if ($_POST['password']==$_POST['confirmpassword'] && preg_match($password_regex,$_POST["password"])){
+        }*/
+        if ($_POST['password']==$_POST['confirmpassword']/* && preg_match($password_regex,$_POST["password"])*/){
             //var_dump($_POST['email'],$_POST['password'],$_POST['confirmpassword']);
             $query=$this->db->query("select * from public.users where email = $1;",$_POST["email"]);
         
