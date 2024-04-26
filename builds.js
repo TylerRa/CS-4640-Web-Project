@@ -147,8 +147,10 @@ function loadViewBuilds() {
         type: "GET",
         url: "index.php?command=retrieveBuilds",
         dataType: "json", //get array of build objects
-        success: function(buildData) {
-            console.log(buildData);
+        success: function(response) {
+           
+            var buildData = JSON.parse(response);
+            console.log(buildData[0]);
             $('#displayAttackDamage').text(buildData[0].attackDamage);
             $('#displayAbilityPower').text(buildData[0].abilityPower);
             $('#displayAttackSpeed').text(buildData[0].attackSpeed);
