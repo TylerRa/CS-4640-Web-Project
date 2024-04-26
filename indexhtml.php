@@ -22,7 +22,7 @@ unset($_SESSION['errorMessage']);
         <meta property="og:title" content="League of Legends Damage Calculator">
         <meta property="og:type" content="website">
         <!--need url-->
-        <meta property="og:url" content="https://cs4640.cs.virginia.edu/hjy4kh/project/index.html">
+        <meta property="og:url" content="https://cs4640.cs.virginia.edu/qh8cz/final_project/index.php">
         <meta property="og:image" content="mySite.jpg">
         <meta property="og:description" content="A site for Calculating League of Legends Champion DPS">
         <meta property="og:site_name" content="League of Legends Damage Calculator"> 
