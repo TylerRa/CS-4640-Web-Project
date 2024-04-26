@@ -264,9 +264,30 @@ class Controller {
     }
 
     public function retrieveBuilds(){
-        $builds=$this->db->query("select builds from public.users where email=$1;",$_SESSION['email']);
-        echo json_encode($builds);
-        //header("Location: viewBuilds.php");
+        header('Content-Type: application/json');
+        $query=$this->db->query("select * from public.users where email=$1;",$_SESSION['email']);
+        //var_dump($query[0]['builds']);
+        if ($query[0]['builds']!=null){
+            echo json_encode($query[0]['builds']);
+            exit;
+        }
+        else{
+            $arr=[
+                'attackDamage' => "",
+                'abilityPower' => "",
+                'attackSpeed' => "",
+                'lethality' => "",
+                'criticalStrikeChance' => "",
+                'armorPenetration' => "",
+                'magicPenetration' => "",
+                'onHitPhysicalDamage' => "",
+                'onHitTrueDamage' =>"",
+                'onHitMagicDamage' => ""
+            ];
+            echo json_encode($arr);
+            exit;
+        }
+        exit;
     }
 
 }

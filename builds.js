@@ -1,4 +1,5 @@
-function saveBuild() {
+$(document).ready(function() {
+    /*function saveBuild() {
     var stats = [];
     var userStatsForm = $("#userStatsForm").children();
     userStatsForm.each(function(index, element) {
@@ -16,8 +17,10 @@ function saveBuild() {
             console.error("Error saving build:", error);
         }
     });
-}
-
+}*/
+    
+    loadViewBuilds();
+});
 function clearBuild() {
     $("#userStatsForm")[0].reset();
 }
@@ -119,7 +122,7 @@ function exportBuild() {
 
 }
 // think this is unused
-function populateBuild(buildNumber) {
+/*function populateBuild(buildNumber) {
     $.ajax({
         type: "GET",
         url: "index.php?command=retrieveBuilds",
@@ -136,15 +139,16 @@ function populateBuild(buildNumber) {
             console.error('Error fetching build data:', error);
         }
     });
-}
+}*/
 // load users builds from profile
-function loadBuilds() {
-    var builds = [];
+function loadViewBuilds() {
+   
     $.ajax({
         type: "GET",
         url: "index.php?command=retrieveBuilds",
         dataType: "json", //get array of build objects
         success: function(buildData) {
+            console.log(buildData);
             $('#displayAttackDamage').text(buildData[0].attackDamage);
             $('#displayAbilityPower').text(buildData[0].abilityPower);
             $('#displayAttackSpeed').text(buildData[0].attackSpeed);
@@ -182,6 +186,6 @@ function loadBuilds() {
         error: function(xhr, status, error) {
             console.error('Error fetching build data:', error);
         }
-    })
+    });
 
 }

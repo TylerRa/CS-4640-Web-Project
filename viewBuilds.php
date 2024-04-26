@@ -18,16 +18,17 @@ unset($_SESSION['errorMessage']);
         <title>League of Legends Damage Calculator</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
         <meta property="og:title" content="League of Legends Damage Calculator">
         <meta property="og:type" content="website">
         <!--need url-->
-        <meta property="og:url" content="https://cs4640.cs.virginia.edu/hjy4kh/">
+        <meta property="og:url" content="https://cs464.cs.virginia.edu/hjy4kh/">
         <meta property="og:image" content="mySite.jpg">
         <meta property="og:description" content="A site for Calculating League of Legends Champion DPS">
         <meta property="og:site_name" content="League of Legends Damage Calculator"> 
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet/less" type="text/css" href="styles/custom.less" >
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6./jquery.min.js"></script>
 
     </head>
 
@@ -57,7 +58,7 @@ unset($_SESSION['errorMessage']);
         </header>
 
         <!--build1-->
-        <section class = "card mx-2 mt-2">
+        <section class = "card mx-2 mt-2" >
             <h2> build 1</h2>
             <div id="images1" class = "image-row flexbox">
                 <img class = "buildimage" src = "toto2.jpg" alt = "placeholder">
@@ -71,46 +72,46 @@ unset($_SESSION['errorMessage']);
             <div id="build1" class="card-body">
                 <h3>Your Champion's Stats</h3>
                 <div>
-                    <strong>Attack Damage:</strong> <span id="displayAttackDamage">0</span>
+                    <strong>Attack Damage:</strong> <span id="displayAttackDamage"></span>
                 </div>
                 <div>
-                    <strong>Ability Power:</strong> <span id="displayAbilityPower">0</span>
+                    <strong>Ability Power:</strong> <span id="displayAbilityPower"></span>
                 </div>
                 <div>
-                    <strong>Attack Speed:</strong> <span id="displayAttackSpeed">0</span>
+                    <strong>Attack Speed:</strong> <span id="displayAttackSpeed"></span>
                 </div>
                 <div>
-                    <strong>Lethality:</strong> <span id="displayLethality">0</span>
+                    <strong>Lethality:</strong> <span id="displayLethality"></span>
                 </div>
                 <div>
-                    <strong>Critical Strike Chance:</strong> <span id="displayCriticalStrikeChance">0</span>
+                    <strong>Critical Strike Chance:</strong> <span id="displayCriticalStrikeChance"></span>
                 </div>
                 <div>
-                    <strong>Armor Penetration:</strong> <span id="displayArmorPenetration">0</span>
+                    <strong>Armor Penetration:</strong> <span id="displayArmorPenetration"></span>
                 </div>
                 <div>
-                    <strong>Magic Penetration:</strong> <span id="displayMagicPenetration">0</span>
+                    <strong>Magic Penetration:</strong> <span id="displayMagicPenetration"></span>
                 </div>
                 <div>
-                    <strong>On-Hit Physical Damage:</strong> <span id="displayOnHitPhysicalDamage">0</span>
+                    <strong>On-Hit Physical Damage:</strong> <span id="displayOnHitPhysicalDamage"></span>
                 </div>
                 <div>
-                    <strong>On-Hit True Damage:</strong> <span id="displayOnHitTrueDamage">0</span>
+                    <strong>On-Hit True Damage:</strong> <span id="displayOnHitTrueDamage"></span>
                 </div>
                 <div>
-                    <strong>On-Hit Magic Damage:</strong> <span id="displayOnHitMagicDamage">0</span>
+                    <strong>On-Hit Magic Damage:</strong> <span id="displayOnHitMagicDamage"></span>
                 </div>
                 <div>
-                    <strong>Armor:</strong> <span id="displayArmor">0</span>
+                    <strong>Armor:</strong> <span id="displayArmor"></span>
                 </div>
                 <div>
-                    <strong>Magic Resistance:</strong> <span id="displayMagicResistance">0</span>
+                    <strong>Magic Resistance:</strong> <span id="displayMagicResistance"></span>
                 </div>
                 <div>
-                    <strong>Health Points:</strong> <span id="displayHealthPoints">0</span>
+                    <strong>Health Points:</strong> <span id="displayHealthPoints"></span>
                 </div>
                 <div>
-                    <strong>Percent Damage Reduction:</strong> <span id="displayPercentDamageReduction">0</span>
+                    <strong>Percent Damage Reduction:</strong> <span id="displayPercentDamageReduction"></span>
                 </div>
                 <div>
                     <a class="btn btn-secondary mx-1" href="#">Import</a>
@@ -136,46 +137,46 @@ unset($_SESSION['errorMessage']);
             <div id="build2" class="card-body">
                 <h3>Your Champion's Stats</h3>
                 <div>
-                    <strong>Attack Damage:</strong> <span id="displayAttackDamage2">0</span>
+                    <strong>Attack Damage:</strong> <span id="displayAttackDamage2"></span>
                 </div>
                 <div>
-                    <strong>Ability Power:</strong> <span id="displayAbilityPower2">0</span>
+                    <strong>Ability Power:</strong> <span id="displayAbilityPower2"></span>
                 </div>
                 <div>
-                    <strong>Attack Speed:</strong> <span id="displayAttackSpeed2">0</span>
+                    <strong>Attack Speed:</strong> <span id="displayAttackSpeed2"></span>
                 </div>
                 <div>
-                    <strong>Lethality:</strong> <span id="displayLethality2">0</span>
+                    <strong>Lethality:</strong> <span id="displayLethality2"></span>
                 </div>
                 <div>
-                    <strong>Critical Strike Chance:</strong> <span id="displayCriticalStrikeChance2">0</span>
+                    <strong>Critical Strike Chance:</strong> <span id="displayCriticalStrikeChance2"></span>
                 </div>
                 <div>
-                    <strong>Armor Penetration:</strong> <span id="displayArmorPenetration2">0</span>
+                    <strong>Armor Penetration:</strong> <span id="displayArmorPenetration2"></span>
                 </div>
                 <div>
-                    <strong>Magic Penetration:</strong> <span id="displayMagicPenetration2">0</span>
+                    <strong>Magic Penetration:</strong> <span id="displayMagicPenetration2"></span>
                 </div>
                 <div>
-                    <strong>On-Hit Physical Damage:</strong> <span id="displayOnHitPhysicalDamage2">0</span>
+                    <strong>On-Hit Physical Damage:</strong> <span id="displayOnHitPhysicalDamage2"></span>
                 </div>
                 <div>
-                    <strong>On-Hit True Damage:</strong> <span id="displayOnHitTrueDamage2">0</span>
+                    <strong>On-Hit True Damage:</strong> <span id="displayOnHitTrueDamage2"></span>
                 </div>
                 <div>
-                    <strong>On-Hit Magic Damage:</strong> <span id="displayOnHitMagicDamage2">0</span>
+                    <strong>On-Hit Magic Damage:</strong> <span id="displayOnHitMagicDamage2"></span>
                 </div>
                 <div>
-                    <strong>Armor:</strong> <span id="displayArmor2">0</span>
+                    <strong>Armor:</strong> <span id="displayArmor2"></span>
                 </div>
                 <div>
-                    <strong>Magic Resistance:</strong> <span id="displayMagicResistance2">0</span>
+                    <strong>Magic Resistance:</strong> <span id="displayMagicResistance2"></span>
                 </div>
                 <div>
-                    <strong>Health Points:</strong> <span id="displayHealthPoints2">0</span>
+                    <strong>Health Points:</strong> <span id="displayHealthPoints2"></span>
                 </div>
                 <div>
-                    <strong>Percent Damage Reduction:</strong> <span id="displayPercentDamageReduction2">0</span>
+                    <strong>Percent Damage Reduction:</strong> <span id="displayPercentDamageReduction2"></span>
                 </div>
                 <div>
                     <a class="btn btn-secondary mx-1" href="#">Import</a>
@@ -198,46 +199,46 @@ unset($_SESSION['errorMessage']);
             <div id="buid3" class="card-body">
                 <h3>Your Champion's Stats</h3>
                 <div>
-                    <strong>Attack Damage:</strong> <span id="displayAttackDamage3">0</span>
+                    <strong>Attack Damage:</strong> <span id="displayAttackDamage3"></span>
                 </div>
                 <div>
-                    <strong>Ability Power:</strong> <span id="displayAbilityPower3">0</span>
+                    <strong>Ability Power:</strong> <span id="displayAbilityPower3"></span>
                 </div>
                 <div>
-                    <strong>Attack Speed:</strong> <span id="displayAttackSpeed3">0</span>
+                    <strong>Attack Speed:</strong> <span id="displayAttackSpeed3"></span>
                 </div>
                 <div>
-                    <strong>Lethality:</strong> <span id="displayLethality3">0</span>
+                    <strong>Lethality:</strong> <span id="displayLethality3"></span>
                 </div>
                 <div>
-                    <strong>Critical Strike Chance:</strong> <span id="displayCriticalStrikeChance3">0</span>
+                    <strong>Critical Strike Chance:</strong> <span id="displayCriticalStrikeChance3"></span>
                 </div>
                 <div>
-                    <strong>Armor Penetration:</strong> <span id="displayArmorPenetration3">0</span>
+                    <strong>Armor Penetration:</strong> <span id="displayArmorPenetration3"></span>
                 </div>
                 <div>
-                    <strong>Magic Penetration:</strong> <span id="displayMagicPenetration3">0</span>
+                    <strong>Magic Penetration:</strong> <span id="displayMagicPenetration3"></span>
                 </div>
                 <div>
-                    <strong>On-Hit Physical Damage:</strong> <span id="displayOnHitPhysicalDamage3">0</span>
+                    <strong>On-Hit Physical Damage:</strong> <span id="displayOnHitPhysicalDamage3"></span>
                 </div>
                 <div>
-                    <strong>On-Hit True Damage:</strong> <span id="displayOnHitTrueDamage3">0</span>
+                    <strong>On-Hit True Damage:</strong> <span id="displayOnHitTrueDamage3"></span>
                 </div>
                 <div>
-                    <strong>On-Hit Magic Damage:</strong> <span id="displayOnHitMagicDamage3">0</span>
+                    <strong>On-Hit Magic Damage:</strong> <span id="displayOnHitMagicDamage3"></span>
                 </div>
                 <div>
-                    <strong>Armor:</strong> <span id="displayArmor3">0</span>
+                    <strong>Armor:</strong> <span id="displayArmor3"></span>
                 </div>
                 <div>
-                    <strong>Magic Resistance:</strong> <span id="displayMagicResistance3">0</span>
+                    <strong>Magic Resistance:</strong> <span id="displayMagicResistance3"></span>
                 </div>
                 <div>
-                    <strong>Health Points:</strong> <span id="displayHealthPoints3">0</span>
+                    <strong>Health Points:</strong> <span id="displayHealthPoints3"></span>
                 </div>
                 <div>
-                    <strong>Percent Damage Reduction:</strong> <span id="displayPercentDamageReduction3">0</span>
+                    <strong>Percent Damage Reduction:</strong> <span id="displayPercentDamageReduction3"></span>
                 </div>
                 <div class="mt-2">
                     <a class="btn btn-secondary mx-1" href="#">Import</a>
@@ -252,9 +253,8 @@ unset($_SESSION['errorMessage']);
                 &copy; Tyler Rasmussen, Isabella Huang, 2024
             </small>
         </footer>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script src = builds.js></script>
-
-        <script>
-            loadBuilds();
-        </script>
+        
+        
     </body>
