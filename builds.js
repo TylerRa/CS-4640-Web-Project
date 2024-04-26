@@ -94,6 +94,9 @@ function calculateDps() {
     console.log(mitigatedDamage);
     var dps = mitigatedDamage * attackSpeed;
     console.log(dps);
+    if (isNaN(dps)) {
+        return "Error: Add a stat for every field"
+    }
     return dps;
     // not done here so we can used arrow function later
     $("#dpsBox").val(dps);
