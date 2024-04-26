@@ -87,12 +87,17 @@ function calculateDps() {
     var armorPenetration = stats['Armor Penetration'];
     var lethality = stats['Lethality'];
     var attackSpeed = stats['Attack Speed'];
-
+    var onhitTrueDamage = stats['On-Hit True Damage'];
+    var onHitMagicDamage = stats['On-Hit Magic Damage'];
+    var magicPenetration = stats['Magic Penetration'];
+    var abilityPower = stats['Ability Power'];
+    var percentDamageReduction = stats['Percent Damage Reduction'];
     var damage = (physicalDamage + criticalChance/100 * (modifier - 1) * 100) + onhitPhysicalDamage;
     console.log(damage);
     var mitigatedDamage = damage * 100 / (100 + armor -(armor * armorPenetration*.01) - lethality);
+    var mitigatedDamage = mitigatedDamage + (onHitMagicDamage + abilityPower) * 100/(100- magicPenetration);
     console.log(mitigatedDamage);
-    var dps = mitigatedDamage * attackSpeed;
+    var dps = (mitigatedDamage+onhitTrueDamage)*(1-(percentDamageReduction/100)) * attackSpeed;
     console.log(dps);
     if (isNaN(dps)) {
         return "Error: Add a stat for every field"
