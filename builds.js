@@ -33,7 +33,7 @@ function loadBuild() {
         // could add dataTyper here so dont have to parse later
         success: function(response) {
             var builds = JSON.parse(response);
-            var stats = builds[0]
+            var stats = builds[0];
             $("#userStatsForm").children().each(function(index, element) {
                 $(element).val(stats[index]);
             });
@@ -190,4 +190,40 @@ function loadViewBuilds() {
         }
     });
 
+}
+
+function importBuild(buttonId, fileId) {
+    document.getElementById(buttonId).onclick = function() {
+        var files = document.getElementById(fileId).files;
+        console.log(files);
+        if (files.length <= 0) {
+        return false;
+      }
+    
+      var fr = new FileReader();
+    
+      fr.onload = function(e) { 
+      console.log(e);
+        var result = JSON.parse(e.target.result);
+        var stats = result;
+
+        // Get an array of keys from the stats object
+        var statKeys = Object.keys(stats);
+        
+        // Iterate over the input fields in the form
+        $("#userStatsForm input").each(function(index, element) {
+            // Get the corresponding key from the stats object based on the current index
+            var statKey = statKeys[index];
+            
+            // Check if a key exists at this index
+            if (statKey) {
+                // Set the value of the input field to the corresponding value from the stats object
+                $(element).val(stats[statKey]);
+            }
+        });
+        console.log(stats);
+      }
+    
+      fr.readAsText(files.item(0));
+    };
 }

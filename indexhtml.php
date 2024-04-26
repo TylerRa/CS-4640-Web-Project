@@ -68,9 +68,10 @@ unset($_SESSION['errorMessage']);
                     Use the fields below to input your stats and your opponents stats.
                     Click calculate to generate the damage per second.
                     </p>   
-                <!--import and export builds-->  
                     <div class="btn-grouped">
-                        <a class="btn btn-secondary mx-1" href="#">Import</a>
+                        <button id="importButton" class="btn btn-secondary mx-1">Import</button>
+                        <input type="file" id="selectFiles" />
+                        <textarea id="result" style="display: none;"></textarea>
                         <a id="exportButton" class="btn btn-secondary mx-1" href="#">Export</a>
                     </div>
                 </div>
@@ -205,7 +206,7 @@ unset($_SESSION['errorMessage']);
             document.getElementById('userStatsCalculate').addEventListener('click', () => $("#dpsBox").val(calculateDps()));
             // Event listener for the Save to Profile button
           //  document.getElementById('userStatsSave').addEventListener('click', saveBuild);
-
+            importBuild("importButton",'selectFiles');
         </script>
 
     </body>
