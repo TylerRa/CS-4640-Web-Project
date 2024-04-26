@@ -75,7 +75,7 @@ function calculateDps() {
 
     if (Object.keys(stats).length === 0) {
         console.log("No valid stats found.");
-        return;
+        return "Error: Add a stat for every field";
     }
     console.log(stats);
     // Extract individual stats from the stats object
@@ -235,17 +235,13 @@ function importBuild(buttonId, fileId) {
         var result = JSON.parse(e.target.result);
         var stats = result;
 
-        // Get an array of keys from the stats object
+        // Get an array of keys from the stats object and add values in order read.
         var statKeys = Object.keys(stats);
         
-        // Iterate over the input fields in the form
         $("#userStatsForm input").each(function(index, element) {
-            // Get the corresponding key from the stats object based on the current index
             var statKey = statKeys[index];
             
-            // Check if a key exists at this index
             if (statKey) {
-                // Set the value of the input field to the corresponding value from the stats object
                 $(element).val(stats[statKey]);
             }
         });
