@@ -46,11 +46,19 @@ unset($_SESSION['errorMessage']);
         <div>
 			<h2>Profile Page</h2>
             <h4>Hello, you're logged in as <?php echo $_SESSION['email']; ?></h4>
-            <?php if (!empty($errorMessage)): ?>
-                <div class="alert alert-success" >
-                <?php echo $errorMessage; ?>
-                </div>
-            <?php endif; ?>
+    <script>
+        
+        var errorMessage = <?php echo json_encode($errorMessage); ?>;
+
+        window.onload = function() {
+            if (errorMessage) {
+                var errorDiv = document.createElement('div');
+                errorDiv.className = 'alert alert-success';
+                errorDiv.innerHTML = errorMessage;
+                document.body.insertBefore(errorDiv, document.body.firstChild);
+            }
+        }
+    </script>
 			<div class="card-body">
                                     <!--/opt/src/-->
                     <form action="index.php?command=profile" method="post">

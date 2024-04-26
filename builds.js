@@ -163,13 +163,14 @@ function loadViewBuilds() {
                 var cardBody = $('<div>').addClass('card-body');
 
                 $.each(build, function(stat, value) {
-             
+                    if (value != ""){
                     var statDiv = $('<div>');
                     var statStrong = $('<strong>').text(stat.replace(/([A-Z])/g, ' $1').trim().toLowerCase() + ': ');
                     var statSpan = $('<span>').text(value);
                     
                     statDiv.append(statStrong, statSpan);
                     cardBody.append(statDiv);
+                    }
                 });
                 buildCard.append($('<img>',{src:"toto2.jpg",alt:"placeholder",class:"buildimage"}));
                 buildCard.append($('<h2>').text('Build ' + (index + 1)), cardBody);

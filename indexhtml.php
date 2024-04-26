@@ -57,11 +57,19 @@ unset($_SESSION['errorMessage']);
 
         <!--Description and Instructions-->
         <div>
-        <?php if (!empty($errorMessage)): ?>
-                <div class="alert alert-success" >
-                <?php echo $errorMessage; ?>
-                </div>
-            <?php endif; ?>
+        <script>
+        
+        var errorMessage = <?php echo json_encode($errorMessage); ?>;
+
+        window.onload = function() {
+            if (errorMessage) {
+                var errorDiv = document.createElement('div');
+                errorDiv.className = 'alert alert-success';
+                errorDiv.innerHTML = errorMessage;
+                document.body.insertBefore(errorDiv, document.body.firstChild);
+            }
+        }
+    </script>
             <div class = "card">
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <p class="card-text">

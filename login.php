@@ -45,12 +45,19 @@ unset($_SESSION['errorMessage']);
                 </div>
             </div>
         </nav>
+        <script>
+        
+        var errorMessage = <?php echo json_encode($errorMessage); ?>;
 
-        <?php if (!empty($errorMessage)): ?>
-                <div class="alert alert-success" >
-                <?php echo $errorMessage; ?>
-                </div>
-        <?php endif; ?>
+        window.onload = function() {
+            if (errorMessage) {
+                var errorDiv = document.createElement('div');
+                errorDiv.className = 'alert alert-success';
+                errorDiv.innerHTML = errorMessage;
+                document.body.insertBefore(errorDiv, document.body.firstChild);
+            }
+        }
+    </script>
         <section>
             
             <div class="mx-auto mt-3 border" style="width:40%">
